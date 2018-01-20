@@ -1,5 +1,7 @@
-package com.revature.ScrumHub.model;
+package com.revature.ScrumHub.bean;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,13 +17,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="STORIES")
-public class StoriesModel {
+public class Story {
 
-	
 	@Id
-	@Column(name="STORY_ID")
 	@SequenceGenerator(sequenceName="STORY_SEQ", name="STORY_SEQ")
 	@GeneratedValue(generator="STORY_SEQ", strategy=GenerationType.SEQUENCE)
+	@Column(name="STORY_ID")
 	private int storyId;
 	
 	@Column(name="STORY_NAME")
@@ -33,18 +34,18 @@ public class StoriesModel {
 	private String checklistName;
 	
 	@Column(name="DONE_STORY_TIMESTAMP")
-	private Date doneStoryTimestamp;
+	private Timestamp doneStoryTimestamp;
 	
 	@Column(name="STORY_ORDER")
 	private int storyOrder;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="SL_ID")
-	private int slId;
+//	@ManyToOne(fetch=FetchType.EAGER)
+//	@JoinColumn(name="SL_ID")
+//	private int slId;
 	
-	public StoriesModel() {	}
+	public Story() {}
 
-	public StoriesModel(int storyId, String storyName, int points, String checklistName, Date doneStoryTimestamp,
+	public Story(int storyId, String storyName, int points, String checklistName, Timestamp doneStoryTimestamp,
 			int storyOrder) {
 		this.storyId = storyId;
 		this.storyName = storyName;
@@ -92,7 +93,7 @@ public class StoriesModel {
 		return doneStoryTimestamp;
 	}
 
-	public void setDoneStoryTimestamp(Date doneStoryTimestamp) {
+	public void setDoneStoryTimestamp(Timestamp doneStoryTimestamp) {
 		this.doneStoryTimestamp = doneStoryTimestamp;
 	}
 
