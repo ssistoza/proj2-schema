@@ -1,10 +1,10 @@
-package com.revature.ScrumHub.Service;
+package com.revature.ScrumHub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.ScrumHub.Repository.StoryRepository;
 import com.revature.ScrumHub.bean.Story;
+import com.revature.ScrumHub.repository.StoryRepository;
 
 @Service
 public class StoryService {
