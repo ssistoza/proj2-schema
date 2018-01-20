@@ -5,7 +5,7 @@ An agile SCRUM board software system.
 - Daniel Robinson : Team Leader
 - Francisco Palomino
 - Jeff Camacho
-- Jordan Delong
+- Jordan DeLong
 - Shane Avery Sistoza
 
 ## Required Technologies (API)
