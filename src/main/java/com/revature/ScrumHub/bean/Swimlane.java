@@ -23,9 +23,9 @@ public class Swimlane implements Serializable{
 	@Id
 	@SequenceGenerator(sequenceName="SL_SEQ", name="SL_SEQ")
 	@GeneratedValue(generator="SL_SEQ", strategy=GenerationType.SEQUENCE)
-	@Column(name="SL_ID")
+	@Column(name="SL_ID", nullable=false)
 	private int slId;
-	@Column(name="SL_NAME")
+	@Column(name="SL_NAME", nullable=false)
 	private String slName;
 	@Column(name="SL_ORDER")
 	private int slOrder;

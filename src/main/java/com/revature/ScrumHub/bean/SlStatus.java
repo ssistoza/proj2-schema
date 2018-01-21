@@ -14,7 +14,7 @@ public class SlStatus implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="SL_STATUS_ID")
+	@Column(name="SL_STATUS_ID", nullable=false)
 	private int slStatusId;
 	@Column(name="STATUS_TYPE")
 	private String statusType;
