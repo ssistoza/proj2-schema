@@ -1,10 +1,10 @@
-package com.revature.ScrumHub.Service;
+package com.revature.ScrumHub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.ScrumHub.Repository.SlStatusRepository;
 import com.revature.ScrumHub.bean.SlStatus;
+import com.revature.ScrumHub.repository.SlStatusRepository;
 
 @Service
 public class SlStatusService {
