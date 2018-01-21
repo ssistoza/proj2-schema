@@ -2,6 +2,7 @@ package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,9 +39,9 @@ public class Task implements Serializable
 	@Column(name="TASK_TIMESTAMP")
 	private Timestamp taskTimestamp;
 	
-//	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-//	@JoinColumn(name="STORY_ID")
-//	private Story story;
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="STORY_ID")
+	private Story story;
 	
 	public Task()
 	{
@@ -53,14 +54,22 @@ public class Task implements Serializable
 		this.taskTimestamp = taskTimestamp;
 	}
 	
-	
-
 	public Task(int taskId, String taskDescription, Timestamp taskTimestamp) {
 		super();
 		this.taskId = taskId;
 		this.taskDescription = taskDescription;
 		this.taskTimestamp = taskTimestamp;
+	}	
+	
+	public Task(int taskId, String taskDescription, Timestamp taskTimestamp, Story story) {
+		super();
+		this.taskId = taskId;
+		this.taskDescription = taskDescription;
+		this.taskTimestamp = taskTimestamp;
+		this.story = story;
 	}
+	
+	
 
 	public int getTaskId() {
 		return taskId;
@@ -85,13 +94,21 @@ public class Task implements Serializable
 	public void setTaskTimestamp(Timestamp taskTimestamp) {
 		this.taskTimestamp = taskTimestamp;
 	}
+	
+
+	public Story getStory() {
+		return story;
+	}
+
+	public void setStory(Story story) {
+		this.story = story;
+	}
 
 	@Override
 	public String toString() {
 		return "Task [taskId=" + taskId + ", taskDescription=" + taskDescription + ", taskTimestamp=" + taskTimestamp
-				+ "]";
+				+ ", story=" + story + "]";
 	}
-	
 	
 	
 }
