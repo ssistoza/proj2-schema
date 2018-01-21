@@ -12,5 +12,5 @@ public interface SwimlaneService {
 	
 	public Swimlane createSwimlane (Swimlane swimlane);
 	
-	public void deleteSwimlane (int slId);
+	public void deleteSwimlane (Swimlane swimlane);
 }
