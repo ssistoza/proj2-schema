@@ -1,4 +1,4 @@
-package com.revature.ScrumHub.Repository;
+package com.revature.ScrumHub.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 

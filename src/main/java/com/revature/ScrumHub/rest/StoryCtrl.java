@@ -1,4 +1,4 @@
-package com.revature.ScrumHub.Rest;
+package com.revature.ScrumHub.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.ScrumHub.Service.StoryService;
 import com.revature.ScrumHub.bean.Story;
+import com.revature.ScrumHub.service.StoryService;
 
 @RestController
 public class StoryCtrl {

@@ -17,17 +17,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="STORIES")
-public class Story implements Serializable{
-
-	private static final long serialVersionUID = 1L;
+public class Story {
 
 	@Id
-	@SequenceGenerator(sequenceName="STORY_SEQ", name="STORY_SEQ")
+	@SequenceGenerator(sequenceName="STORY_SEQ", name="STORY_SEQ", allocationSize=1)
 	@GeneratedValue(generator="STORY_SEQ", strategy=GenerationType.SEQUENCE)
-	@Column(name="STORY_ID")
+	@Column(name="STORY_ID", nullable=false)
 	private int storyId;
 	
-	@Column(name="STORY_NAME")
+	@Column(name="STORY_NAME", nullable=false)
 	private String storyName;	
 	
 	private int points;
