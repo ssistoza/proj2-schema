@@ -23,7 +23,7 @@ public class Role implements Serializable {
 	@Id
 	@SequenceGenerator(sequenceName="ROLE_SEQ", name="ROLE_SEQ")
 	@GeneratedValue(generator="ROLE_SEQ", strategy=GenerationType.SEQUENCE)
-	@Column(name = "R_ID")
+	@Column(name = "R_ID", nullable=false)
 	private int roleId;
 
 	@Column(name = "BOARD_ROLE_TYPE")

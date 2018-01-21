@@ -6,15 +6,9 @@ import org.springframework.stereotype.Service;
 import com.revature.ScrumHub.Repository.RolesRepository;
 import com.revature.ScrumHub.bean.Role;
 
-@Service
-public class RolesService {
+
+public interface RolesService {
 	
-	@Autowired
-	RolesRepository rolesRepo;
-	
-	public Role getRole (int roleId) {
-		System.out.println("Service -getRole");
-		return rolesRepo.findOne(roleId);
-	}	
+	public Role getRole (int roleId);
 
 }
