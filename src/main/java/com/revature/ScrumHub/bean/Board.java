@@ -15,7 +15,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name="BOARD")
-public class ScrumBoard {
+public class Board {
 	
 	@Id
 	@SequenceGenerator(name="B_SEQ", sequenceName="B_SEQ", allocationSize=1)
@@ -32,7 +32,7 @@ public class ScrumBoard {
 //	private List<ScrumUser> bAdmins;
 //	private ScrumUser bOwner;
 	
-	public ScrumBoard() {}
+	public Board() {}
 
 	public int getbId() { return bId; }
 	public void setbId(int bId) { this.bId = bId; }
