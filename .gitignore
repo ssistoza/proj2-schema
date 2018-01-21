@@ -1,5 +1,5 @@
 # Project Specific
-src/main/resources/*.properties
+/src/main/resources/application.properties
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
