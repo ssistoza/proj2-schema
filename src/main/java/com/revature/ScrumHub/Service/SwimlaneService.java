@@ -19,7 +19,7 @@ public class SwimlaneService {
 	}
 	
 	public Swimlane createSwimlane (Swimlane swimlane) {
-		System.out.println("Servie -create Swimlane");
+		System.out.println("Service -create Swimlane");
 		swimRepo.save(swimlane);
 		return swimlane;
 	}
