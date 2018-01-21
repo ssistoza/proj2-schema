@@ -17,7 +17,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="STORIES")
-public class Story {
+public class Story implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@SequenceGenerator(sequenceName="STORY_SEQ", name="STORY_SEQ", allocationSize=1)
