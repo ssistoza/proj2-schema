@@ -22,16 +22,14 @@ public class Board {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="B_SEQ")
 	@Column(name="B_ID")
 	private int bId;
-
+	
+	@Column(name="B_NAME")
 	private String bName;
 
 	@CreationTimestamp
+	@Column(name="B_TIMESTAMP")
 	private Timestamp bTimestamp;
-	
-//	private List<ScrumUser> bSpectators;
-//	private List<ScrumUser> bAdmins;
-//	private ScrumUser bOwner;
-	
+		
 	public Board() {}
 
 	public int getbId() { return bId; }
