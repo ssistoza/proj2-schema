@@ -1,10 +1,18 @@
 package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +22,8 @@ public class Scrumhub_User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@SequenceGenerator(name="U_SEQ", sequenceName="U_SEQ", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="U_SEQ")
 	@Column(name="U_ID", nullable=false)
 	private int u_id;
 	
@@ -32,6 +42,8 @@ public class Scrumhub_User implements Serializable{
 	@Column(name="LASTNAME")
 	private String lastname;
 	
+	@OneToMany(mappedBy="boardMemberId", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private Set<BoardMember> associatedBoards = new HashSet<>();
 	
 	public Scrumhub_User() {}
 
@@ -108,12 +120,17 @@ public class Scrumhub_User implements Serializable{
 		this.lastname = lastname;
 	}
 
+	public void addAssociatedBoards(BoardMember bm) {
+		this.associatedBoards.add(bm);
+	}
 
 	@Override
 	public String toString() {
-		return "Scrumhub_User [u_id=" + u_id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", firstname=" + firstname + ", lastname=" + lastname + "]";
+		return "Scrumhub_User [u_id=" + u_id + ", username=" + username + ", email=" + email + ", firstname="
+				+ firstname + ", lastname=" + lastname + ", associatedBoards=" + associatedBoards + "]";
 	}
+
+
 	
 	
 }

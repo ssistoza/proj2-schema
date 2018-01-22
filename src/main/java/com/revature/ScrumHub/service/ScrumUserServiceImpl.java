@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.ScrumHub.bean.BoardMember;
 import com.revature.ScrumHub.bean.Scrumhub_User;
 import com.revature.ScrumHub.repository.ScrumUserRepo;
 
@@ -46,5 +47,4 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 		userRepo.delete(user.getU_id());
 		return user;
 	}
-
 }

@@ -1,13 +1,16 @@
 package com.revature.ScrumHub.bean;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -27,10 +30,6 @@ public class Board {
 
 	@CreationTimestamp
 	private Timestamp bTimestamp;
-	
-//	private List<ScrumUser> bSpectators;
-//	private List<ScrumUser> bAdmins;
-//	private ScrumUser bOwner;
 	
 	public Board() {}
 

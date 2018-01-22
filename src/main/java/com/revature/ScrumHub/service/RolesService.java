@@ -16,5 +16,10 @@ public class RolesService {
 		System.out.println("Service -getRole");
 		return rolesRepo.findOne(roleId);
 	}	
-
+	
+	public Role createRole (Role r) {
+		System.out.println("Service -setRole");
+		rolesRepo.save(r);
+		return r;
+	}
 }
