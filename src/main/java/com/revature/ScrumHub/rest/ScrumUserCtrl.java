@@ -17,7 +17,7 @@ import com.revature.ScrumHub.bean.Scrumhub_User;
 import com.revature.ScrumHub.service.ScrumUserServiceImpl;
 
 @RestController
-@RequestMapping("/user/")
+@RequestMapping("/user")
 public class ScrumUserCtrl {
 
 	@Autowired
@@ -31,7 +31,7 @@ public class ScrumUserCtrl {
 	}
 	@RequestMapping("/retrieveUser/{id}")
 	public Scrumhub_User retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
-		
+		System.out.println("trying to get ID");
 		return userService.retrieveScrumUser(id);
 	}
 	@RequestMapping("/retrieveAllUsers")
@@ -48,5 +48,11 @@ public class ScrumUserCtrl {
 	public ResponseEntity<Scrumhub_User> deleteScrumUser(@RequestBody Scrumhub_User user){
 		Scrumhub_User deletedUser = userService.deleteScrumUser(user);
 		return new ResponseEntity<Scrumhub_User>(deletedUser, HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping("/login")
+	public Scrumhub_User loggingInUser(String username, String password) {
+		
+		return null;
 	}
 }
