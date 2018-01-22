@@ -1,8 +1,11 @@
 package com.revature.ScrumHub.rest;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,8 +54,15 @@ public class ScrumUserCtrl {
 	}
 	
 	@PostMapping("/login")
-	public Scrumhub_User loggingInUser(String username, String password) {
+	public void loggingInUser(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
+		Scrumhub_User loggedInUser = userService.validateUser(username, password);
 		
-		return null;
+		if(loggedInUser != null) {
+			request.getSession().setAttribute("user", loggedInUser);
+			request.getRequestDispatcher("index.html").forward(request, response);
+		}else {
+			System.err.println("invalid credentials -sending user back to login.html");
+			response.sendRedirect("login.html");
+		}
 	}
 }
