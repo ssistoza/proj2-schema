@@ -1,4 +1,4 @@
-package com.revature.ScrumHub.Service;
+package com.revature.ScrumHub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

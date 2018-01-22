@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.ScrumHub.Service.StoryService;
+import com.revature.ScrumHub.service.StoryService;
 import com.revature.ScrumHub.bean.Story;
 
 @RestController

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.ScrumHub.Service.RolesService;
+import com.revature.ScrumHub.service.RolesService;
 import com.revature.ScrumHub.bean.Role;
 
 @RestController

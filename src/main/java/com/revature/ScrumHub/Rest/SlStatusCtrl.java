@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.ScrumHub.Service.SlStatusService;
+import com.revature.ScrumHub.service.SlStatusService;
 import com.revature.ScrumHub.bean.SlStatus;
 
 @RestController

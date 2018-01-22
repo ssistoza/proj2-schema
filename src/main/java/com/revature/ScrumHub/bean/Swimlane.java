@@ -42,12 +42,12 @@ public class Swimlane implements Serializable{
 	
 	public Swimlane() {}
 
-
-	public Swimlane(int slId, String slName, int slOrder) {
+	public Swimlane(int slId, String slName, int slOrder, SlStatus slStatus) {
 		super();
 		this.slId = slId;
 		this.slName = slName;
 		this.slOrder = slOrder;
+		this.slStatus = slStatus;
 	}
 
 
@@ -70,15 +70,13 @@ public class Swimlane implements Serializable{
 	}
 	public void setSlOrder(int slOrder) {
 		this.slOrder = slOrder;
-	}	
+	}		
 
-	public int getSlStatusId() {
-		return slStatusId;
+	public SlStatus getSlStatus() {
+		return slStatus;
 	}
-
-
-	public void setSlStatusId(int slStatusId) {
-		this.slStatusId = slStatusId;
+	public void setSlStatus(SlStatus slStatus) {
+		this.slStatus = slStatus;
 	}
 
 
