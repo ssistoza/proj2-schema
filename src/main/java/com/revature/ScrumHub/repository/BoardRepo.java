@@ -1,12 +1,10 @@
 package com.revature.ScrumHub.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.revature.ScrumHub.bean.ScrumBoard;
+import com.revature.ScrumHub.bean.Board;
 
-public interface ScrumBoardRepo  extends JpaRepository<ScrumBoard, Integer>{
+public interface BoardRepo extends JpaRepository<Board, Integer>{
 	
 	// List<ScrumBoard> getAllBoardsBybOwner();
 	

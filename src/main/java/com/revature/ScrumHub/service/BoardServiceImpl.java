@@ -7,42 +7,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.ScrumHub.bean.ScrumBoard;
-import com.revature.ScrumHub.repository.ScrumBoardRepo;
+import com.revature.ScrumHub.bean.Board;
+import com.revature.ScrumHub.repository.BoardRepo;
 
 @Service
-public class ScrumBoardServiceImpl implements ScrumBoardService {
+public class BoardServiceImpl implements BoardService {
 
 	@Autowired
-	ScrumBoardRepo sbRepo;
+	BoardRepo sbRepo;
 
 	@Transactional
 	@Override
-	public ScrumBoard createNewBoard(ScrumBoard sb) {
+	public Board createNewBoard(Board sb) {
 		if ( sb.getbName().length() <= 0) { return null; }
 		sbRepo.save(sb);
 		return sb;
 	}
 
 	@Override
-	public ScrumBoard getBoard(int bId) {
-		ScrumBoard temp = new ScrumBoard();
+	public Board getBoard(int bId) {
+		Board temp = new Board();
 		if ( bId > 0  ) temp = sbRepo.findOne(bId);
 		return temp;
 	}
 
 	@Override 
-	public List<ScrumBoard> getAllUserBoards(int scrumUserId) {
-		List<ScrumBoard> listTemp = new ArrayList<>();
+	public List<Board> getAllUserBoards(int scrumUserId) {
+		List<Board> listTemp = new ArrayList<>();
 		// if ( scrumUserId > 0 ) listTemp = sbRepo.getAllBoardsBybOwner(); 
 		return listTemp;
 	}
 
 	@Transactional
 	@Override
-	public ScrumBoard updateName(int bId, String newName) {
-		ScrumBoard sb = getBoard(bId);
-		if ( sb == null ) { return new ScrumBoard(); }
+	public Board updateName(int bId, String newName) {
+		Board sb = getBoard(bId);
+		if ( sb == null ) { return new Board(); }
 		sb.setbName(newName);
 		sbRepo.save(sb);
 		return sb;

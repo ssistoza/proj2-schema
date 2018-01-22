@@ -10,12 +10,5 @@ public class ScrumHubApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ScrumHubApplication.class, args);		
-	}
-//	
-//	public void storyDemo() {
-//		Session session = sessionFactory.openSession();
-//		System.out.println("Getting story");
-//		
-//	}
-	
+	}	
 }
