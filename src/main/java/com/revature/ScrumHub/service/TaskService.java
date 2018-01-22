@@ -6,8 +6,12 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.ScrumHub.bean.Story;
 import com.revature.ScrumHub.bean.Task;
+
 import com.revature.ScrumHub.repository.TaskRepo;
+
+
 
 @Service
 public class TaskService {
@@ -15,17 +19,28 @@ public class TaskService {
 	@Autowired
 	TaskRepo taskRepo;
 	
+	@Autowired
+	StoryService storyService;
+	
 	public Task getTask(int taskId){
-		System.out.println("service -getTask");
 		return taskRepo.findOne(taskId);
 	}
 	
 	public Task createTask(Task task){
-		System.out.println("attempting to insert " + task);
-		task.setTaskTimestamp(new Timestamp(new Date().getTime()));
+
+		Story story = storyService.getStory(task.getStory().getStoryId());
 		
-		taskRepo.save(task);
-		return task;
+		if(story != null)
+		{
+			task.setStory(story);
+			task.setTaskTimestamp(new Timestamp(new Date().getTime()));
+			taskRepo.save(task);
+			return task;
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 }
