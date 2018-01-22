@@ -1,10 +1,14 @@
 package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +24,10 @@ public class SlStatus implements Serializable{
 	private String statusType;
 		
 	
+	@OneToMany(mappedBy="slStatus", fetch=FetchType.EAGER)
+	private Set<Swimlane> statuses = new HashSet<Swimlane>();
+	
+	
 	public SlStatus() {}
 	
 	public SlStatus(int slStatusId, String statusType) {
@@ -27,6 +35,8 @@ public class SlStatus implements Serializable{
 		this.slStatusId = slStatusId;
 		this.statusType = statusType;
 	}
+	
+	
 	
 	
 	public int getSlStatusId() {

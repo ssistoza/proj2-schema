@@ -25,9 +25,9 @@ public class SwimlaneCtrl {
 	}
 		
 		@PostMapping("/createSwimlane")
-		public ResponseEntity<Swimlane> createSwimlane(@RequestBody Swimlane swimlane){
+		public ResponseEntity<Swimlane> createSwimlane(@RequestBody Swimlane sl){
 			System.out.println("SwimlaneCtrl -createSwimlane");
-			swimlane = swimlaneService.createSwimlane(swimlane);
-					return new ResponseEntity<Swimlane>(swimlane, HttpStatus.CREATED);		
+			sl = swimlaneService.createSwimlane(sl);
+					return new ResponseEntity<Swimlane>(sl, HttpStatus.CREATED);		
 		}
 }

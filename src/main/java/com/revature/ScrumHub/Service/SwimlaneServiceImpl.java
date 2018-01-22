@@ -30,10 +30,13 @@ public class SwimlaneServiceImpl implements SwimlaneService {
 	}
 
 	@Override
-	public Swimlane createSwimlane(Swimlane swimlane) {
+	public Swimlane createSwimlane(String slName, int slStatusId) {
 		System.out.println("Service -create Swimlane");
-		swimRepo.save(swimlane);
-		return swimlane;
+		Swimlane sl = new Swimlane();		
+		sl.setSlName(slName);
+		sl.setSlStatusId(slStatusId);
+		swimRepo.save(sl);
+		return sl;
 	}
 
 	@Override

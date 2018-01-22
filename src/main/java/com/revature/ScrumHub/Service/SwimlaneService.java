@@ -10,7 +10,7 @@ public interface SwimlaneService {
 	
 	public List<Swimlane> getAllSwimlanes(int slId);
 	
-	public Swimlane createSwimlane (Swimlane swimlane);
+	public Swimlane createSwimlane (String slName, int statusType);
 	
 	public void deleteSwimlane (Swimlane swimlane);
 }

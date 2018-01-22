@@ -31,11 +31,11 @@ public class Swimlane implements Serializable{
 	private int slOrder;
 	
 
-//	@ManyToOne(fetch=FetchType.EAGER)
-//	@JoinColumn(name="SL_STATUS_ID")
-//	private int slStatusId;
-//	
-//	@OneToMany(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="SL_STATUS_ID")
+	private SlStatus slStatus;
+
+	//	@OneToMany(fetch=FetchType.EAGER)
 //	@JoinColumn(name="B_ID")
 //	private int boardId;
 	
@@ -70,6 +70,15 @@ public class Swimlane implements Serializable{
 	}
 	public void setSlOrder(int slOrder) {
 		this.slOrder = slOrder;
+	}	
+
+	public int getSlStatusId() {
+		return slStatusId;
+	}
+
+
+	public void setSlStatusId(int slStatusId) {
+		this.slStatusId = slStatusId;
 	}
 
 
