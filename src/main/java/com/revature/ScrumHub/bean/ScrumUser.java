@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="SCRUMHUB_USER")
-public class Scrumhub_User implements Serializable{
+public class ScrumUser implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -33,11 +33,11 @@ public class Scrumhub_User implements Serializable{
 	private String lastname;
 	
 	
-	public Scrumhub_User() {}
+	public ScrumUser() {}
 
 	
 	
-	public Scrumhub_User(int u_id, String username, String password, String email, String firstname, String lastname) {
+	public ScrumUser(int u_id, String username, String password, String email, String firstname, String lastname) {
 		super();
 		this.u_id = u_id;
 		this.username = username;
