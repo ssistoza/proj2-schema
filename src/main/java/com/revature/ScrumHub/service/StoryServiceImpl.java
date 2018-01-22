@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.ScrumHub.bean.Story;
-import com.revature.ScrumHub.repository.StoryRepository;
+import com.revature.ScrumHub.repository.StoryRepo;
 
 @Transactional
 @Service
-public class StoryServiceImpl implements StoryService{
+public class StoryServiceImpl implements StoryService {
 	
 	@Autowired
-	StoryRepository storyRepo;		
+	StoryRepo storyRepo;		
 	
 	@Override
 	public Story getStory(int storyId) {
@@ -26,7 +26,7 @@ public class StoryServiceImpl implements StoryService{
 	}
 	
 	@Override
-	public Story createStory (Story story) {
+	public Story createStory(Story story) {
 		System.out.println("Service -createStory");
 		storyRepo.save(story);
 		return story;		
@@ -48,7 +48,7 @@ public class StoryServiceImpl implements StoryService{
 	}
 
 	@Override
-	public void deleteBoard(Story story) {
+	public void deleteStory(Story story) {
 		System.out.println(story.getStoryName() + "has been deleted");
 		storyRepo.delete(story);
 	}	

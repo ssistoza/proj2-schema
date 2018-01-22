@@ -1,18 +1,18 @@
-package com.revature.ScrumHub.Service;
+package com.revature.ScrumHub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.ScrumHub.Repository.SlStatusRepository;
 import com.revature.ScrumHub.bean.SlStatus;
+import com.revature.ScrumHub.repository.SlStatusRepo;
 
 @Transactional
 @Service
 public class SlStatusServiceImpl implements SlStatusService {
 
 	@Autowired
-	SlStatusRepository slStatusRepo;
+	SlStatusRepo slStatusRepo;
 	
 	@Override
 	public SlStatus getSlStatus (int slStatusId) {
