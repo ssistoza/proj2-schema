@@ -1,7 +1,10 @@
 package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,23 +34,26 @@ public class Swimlane implements Serializable{
 	private int slOrder;
 	
 
-//	@ManyToOne(fetch=FetchType.EAGER)
-//	@JoinColumn(name="SL_STATUS_ID")
-//	private int slStatusId;
-//	
-//	@OneToMany(fetch=FetchType.EAGER)
-//	@JoinColumn(name="B_ID")
-//	private int boardId;
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="SL_STATUS_ID")
+	private SlStatus slStatus;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="B_ID")
+	private Board boardKey;
+	
+	@OneToMany(mappedBy="swimlane", fetch=FetchType.EAGER)
+	private Set<Story> stories = new HashSet<Story>();
 	
 	
 	public Swimlane() {}
-
-
-	public Swimlane(int slId, String slName, int slOrder) {
-		super();
+	
+	public Swimlane(int slId, String slName, int slOrder, SlStatus slStatus, Board boardKey) {
 		this.slId = slId;
 		this.slName = slName;
 		this.slOrder = slOrder;
+		this.slStatus = slStatus;
+		this.boardKey = boardKey;
 	}
 
 
@@ -70,13 +76,27 @@ public class Swimlane implements Serializable{
 	}
 	public void setSlOrder(int slOrder) {
 		this.slOrder = slOrder;
+	}		
+
+	public SlStatus getSlStatus() {
+		return slStatus;
+	}
+	public void setSlStatus(SlStatus slStatus) {
+		this.slStatus = slStatus;
+	}
+
+	public Board getBoardKey() {
+		return boardKey;
+	}
+	public void setBoardKey(Board boardKey) {
+		this.boardKey = boardKey;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Swimlane [slId=" + slId + ", slName=" + slName + ", slOrder=" + slOrder + "]";
-	}
-	
-	
+		return "Swimlane [slId=" + slId + ", slName=" + slName + ", slOrder=" + slOrder + ", slStatus=" + slStatus
+				+ ", boardKey=" + boardKey + "]";
+	}	
 }
+
