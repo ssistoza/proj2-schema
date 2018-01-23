@@ -28,15 +28,7 @@ public class Role implements Serializable {
 
 	@Column(name = "BOARD_ROLE_TYPE")
 	private String roleType;
-<<<<<<< HEAD
-//Need to decide if we need a MtM here, or a OtM
-//	@ManyToMany(fetch=FetchType.EAGER)
-//	@JoinTable(name="USER_BOARD_ROLE_JUNCTION",
-//	joinColumns=@JoinColumn(name="R_ID"),
-//	inverseJoinColumns=@JoinColumn(name="U_ID"))
-	
-=======
->>>>>>> ff30d530105e898a19466fe57d05024f844f66a8
+
 	
 	public Role() {
 	}

@@ -33,13 +33,8 @@ public class ScrumUserCtrl {
 		return new ResponseEntity<ScrumUser>(user, HttpStatus.ACCEPTED);
 	}
 	@RequestMapping("/retrieveUser/{id}")
-<<<<<<< HEAD
-	public Scrumhub_User retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
-		System.out.println("trying to get ID");
-=======
 	public ScrumUser retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
-		
->>>>>>> e7c8e04188824d4770335994c3144aabbcaef192
+		System.out.println("trying to get ID");
 		return userService.retrieveScrumUser(id);
 	}
 	@RequestMapping("/retrieveAllUsers")
@@ -60,7 +55,7 @@ public class ScrumUserCtrl {
 	
 	@PostMapping("/login")
 	public void loggingInUser(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
-		Scrumhub_User loggedInUser = userService.validateUser(username, password);
+		ScrumUser loggedInUser = userService.validateUser(username, password);
 		
 		if(loggedInUser != null) {
 			request.getSession().setAttribute("user", loggedInUser);
