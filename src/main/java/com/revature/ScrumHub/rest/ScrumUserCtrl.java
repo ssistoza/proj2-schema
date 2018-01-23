@@ -28,32 +28,32 @@ public class ScrumUserCtrl {
 	@Autowired
 	ScrumUserService userService;
 	
-	@PostMapping("/createUser")
+	@PostMapping("/create")
 	public ResponseEntity<ScrumUser> createNewScrumUser(@RequestBody ScrumUser user){
 		if (user == null ) return new ResponseEntity<ScrumUser>(user, HttpStatus.BAD_REQUEST);
 		user = userService.createNewScrumUser(user);
 		return new ResponseEntity<ScrumUser>(user, HttpStatus.ACCEPTED);
 	}
 	
-	@RequestMapping("/retrieveUser/{id}")
+	@RequestMapping("/{id}")
 	public ScrumUser retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
 		System.out.println("trying to get ID");
 		return userService.retrieveScrumUser(id);
 	}
 	
-	@RequestMapping("/retrieveAllUsers")
+	@RequestMapping("/all")
 	public List<ScrumUser> retrieveAllScrumUsers(){
 		
 		return userService.retrieveAllScrumUsers();
 	}
 	
-	@PostMapping("/updateUser")
+	@PostMapping("/update")
 	public ScrumUser updateScrumUser(@RequestBody ScrumUser user){
 		
 		return userService.updateScrumUser(user);
 	}
 	
-	@PostMapping("/deleteUser")
+	@PostMapping("/delete")
 	public ResponseEntity<ScrumUser> deleteScrumUser(@RequestBody ScrumUser user){
 		ScrumUser deletedUser = userService.deleteScrumUser(user);
 		return new ResponseEntity<ScrumUser>(deletedUser, HttpStatus.ACCEPTED);

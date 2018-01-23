@@ -1,6 +1,8 @@
 package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +37,9 @@ public class Swimlane implements Serializable{
 	
 	@Column(name="B_ID")
 	private int boardKey;	
+	
+	@OneToMany(mappedBy="slId", fetch=FetchType.EAGER)
+	private Set<Story> stories = new HashSet<>();
 	
 	public Swimlane() {}
 	
@@ -81,11 +87,20 @@ public class Swimlane implements Serializable{
 		this.boardKey = boardKey;
 	}
 
+	public Set<Story> getStories() {
+		return stories;
+	}
+
+	public void setStories(Set<Story> stories) {
+		this.stories = stories;
+	}
 
 	@Override
 	public String toString() {
 		return "Swimlane [slId=" + slId + ", slName=" + slName + ", slOrder=" + slOrder + ", slStatus=" + slStatus
-				+ ", boardKey=" + boardKey + "]";
-	}	
+				+ ", boardKey=" + boardKey + ", stories=" + stories + "]";
+	}
+
+	
 }
 

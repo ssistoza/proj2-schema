@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.ScrumHub.bean.Task;
@@ -15,18 +16,19 @@ import com.revature.ScrumHub.service.TaskService;
 
 
 @RestController
+@RequestMapping("/task/")
 @CrossOrigin(origins="*")
 public class TaskCtrl {
 	
 	@Autowired
 	TaskService taskService;
 	
-	@GetMapping("/task/{id}")
+	@GetMapping("/{id}")
 	public Task getTask(@PathVariable int id){
 		return taskService.getTask(id);
 	}
 	
-	@PostMapping("/createTask")
+	@PostMapping("/create")
 	public ResponseEntity<Task> createTask(@RequestBody Task task){
 		System.out.println(task + " recieved from the user. Calling TaskService");
 		
@@ -43,7 +45,7 @@ public class TaskCtrl {
 		
 	}
 	
-	@PostMapping("/updateTask")
+	@PostMapping("/update")
 	public ResponseEntity<Task> updateTask(@RequestBody Task task){
 		System.out.println(task + " recieved from the user. Calling TaskService");
 		
@@ -60,21 +62,4 @@ public class TaskCtrl {
 		
 	}
 	
-	
-//	@DeleteMapping("/deleteTask")
-//	public ResponseEntity<Boolean> deleteTask(@RequestBody Task task){
-//		System.out.println(task + " recieved from the user. Calling TaskService");
-//		
-//		Boolean isDeleted = taskService.deleteTask(task);
-//		
-//		if(isDeleted)
-//		{
-//			return new ResponseEntity<Boolean>(new Boolean("true"), HttpStatus.ACCEPTED);
-//		}
-//		else
-//		{
-//			return new ResponseEntity<Boolean>(new Boolean("false"), HttpStatus.BAD_REQUEST);
-//		}
-//		
-//	}
 }
