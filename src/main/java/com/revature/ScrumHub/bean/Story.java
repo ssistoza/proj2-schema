@@ -41,23 +41,25 @@ public class Story implements Serializable{
 	@Column(name="STORY_ORDER")
 	private int storyOrder;
 	
-//	@ManyToOne(fetch=FetchType.EAGER)
-//	@JoinColumn(name="SL_ID")
-//	private int slId;
-	
-	public Story() {}
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="SL_ID")
+	private Swimlane swimlane;
 
+	
+	public Story() {}	
+	
 	public Story(int storyId, String storyName, int points, String checklistName, Timestamp doneStoryTimestamp,
-			int storyOrder) {
+			int storyOrder, Swimlane swimlane) {
+		super();
 		this.storyId = storyId;
 		this.storyName = storyName;
 		this.points = points;
 		this.checklistName = checklistName;
 		this.doneStoryTimestamp = doneStoryTimestamp;
 		this.storyOrder = storyOrder;
+		this.swimlane = swimlane;
 	}
-	
-	
+
 
 	public int getStoryId() {
 		return storyId;
@@ -107,10 +109,20 @@ public class Story implements Serializable{
 		this.storyOrder = storyOrder;
 	}
 
+	public Swimlane getSwimlane() {
+		return swimlane;
+	}
+
+	public void setSwimlane(Swimlane swimlane) {
+		this.swimlane = swimlane;
+	}
+
 	@Override
 	public String toString() {
-		return "StoriesModel [storyId=" + storyId + ", storyName=" + storyName + ", points=" + points
-				+ ", checklistName=" + checklistName + ", doneStoryTimestamp=" + doneStoryTimestamp + ", storyOrder="
-				+ storyOrder + "]";
-	}	
+		return "Story [storyId=" + storyId + ", storyName=" + storyName + ", points=" + points + ", checklistName="
+				+ checklistName + ", doneStoryTimestamp=" + doneStoryTimestamp + ", storyOrder=" + storyOrder
+				+ ", swimlane=" + swimlane + "]";
+	}
+
+		
 }
