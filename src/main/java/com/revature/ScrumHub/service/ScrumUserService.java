@@ -36,28 +36,16 @@ public interface ScrumUserService {
 	public List<ScrumUser> retrieveAllScrumUsers();
 	/**
 	 * 
-	 * @param user
-	 * @return
-	 */
-<<<<<<< HEAD
-	public Scrumhub_User deleteScrumUser(Scrumhub_User user);
-	/**
-	 * 
 	 * @param username
 	 * @param password
 	 * @return
 	 */
-	public Scrumhub_User validateUser(String username, String password);
+	public ScrumUser validateUser(String username, String password);
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
-	public Scrumhub_User registration(Scrumhub_User user);
-=======
 	public ScrumUser deleteScrumUser(ScrumUser user);
-	
->>>>>>> e7c8e04188824d4770335994c3144aabbcaef192
-	
 
 }

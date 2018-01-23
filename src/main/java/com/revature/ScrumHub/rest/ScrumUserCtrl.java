@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.ScrumHub.bean.ScrumUser;
-import com.revature.ScrumHub.service.ScrumUserServiceImpl;
+import com.revature.ScrumHub.service.ScrumUserService;
 
 @RestController
 @RequestMapping("/user")
 public class ScrumUserCtrl {
 
 	@Autowired
-	ScrumUserServiceImpl userService;
+	ScrumUserService userService;
 	
 	@PostMapping("/createUser")
 	public ResponseEntity<ScrumUser> createNewScrumUser(@RequestBody ScrumUser user){
@@ -32,26 +32,24 @@ public class ScrumUserCtrl {
 		user = userService.createNewScrumUser(user);
 		return new ResponseEntity<ScrumUser>(user, HttpStatus.ACCEPTED);
 	}
+	
 	@RequestMapping("/retrieveUser/{id}")
-<<<<<<< HEAD
-	public Scrumhub_User retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
-		System.out.println("trying to get ID");
-=======
 	public ScrumUser retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
-		
->>>>>>> e7c8e04188824d4770335994c3144aabbcaef192
 		return userService.retrieveScrumUser(id);
 	}
+	
 	@RequestMapping("/retrieveAllUsers")
 	public List<ScrumUser> retrieveAllScrumUsers(){
 		
 		return userService.retrieveAllScrumUsers();
 	}
+	
 	@PostMapping("/updateUser")
 	public ScrumUser updateScrumUser(@RequestBody ScrumUser user){
 		
 		return userService.updateScrumUser(user);
 	}
+	
 	@PostMapping("/deleteUser")
 	public ResponseEntity<ScrumUser> deleteScrumUser(@RequestBody ScrumUser user){
 		ScrumUser deletedUser = userService.deleteScrumUser(user);
@@ -60,7 +58,7 @@ public class ScrumUserCtrl {
 	
 	@PostMapping("/login")
 	public void loggingInUser(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
-		Scrumhub_User loggedInUser = userService.validateUser(username, password);
+		ScrumUser loggedInUser = userService.validateUser(username, password);
 		
 		if(loggedInUser != null) {
 			request.getSession().setAttribute("user", loggedInUser);

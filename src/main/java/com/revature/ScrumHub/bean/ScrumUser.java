@@ -22,7 +22,7 @@ public class ScrumUser implements Serializable{
 	@SequenceGenerator(sequenceName="FILL_SEQ", name="FILL_SEQ")
 	@GeneratedValue(generator="FILL_SEQ", strategy=GenerationType.SEQUENCE)
 	@Column(name="U_ID", nullable=false)
-	private int u_id;
+	private int uId;
 	
 	@Column(name="USERNAME",unique=true,nullable=false)
 	private String username;
@@ -41,45 +41,22 @@ public class ScrumUser implements Serializable{
 	
 	public ScrumUser() {}
 
-<<<<<<< HEAD
-	
-	
-<<<<<<< HEAD:src/main/java/com/revature/ScrumHub/bean/Scrumhub_User.java
-	public Scrumhub_User(int u_id, String username, String email, String firstname, String lastname) {
+	public ScrumUser(int uId, String username, String email, String firstname, String lastname) {
 		super();
-		this.u_id = u_id;
+		this.uId = uId;
 		this.username = username;
 		this.email = email;
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}
 
-
-
-	public Scrumhub_User(int u_id, String username, String password, String email, String firstname, String lastname) {
-=======
-=======
->>>>>>> ff30d530105e898a19466fe57d05024f844f66a8
-	public ScrumUser(int u_id, String username, String password, String email, String firstname, String lastname) {
->>>>>>> e7c8e04188824d4770335994c3144aabbcaef192:src/main/java/com/revature/ScrumHub/bean/ScrumUser.java
-		super();
-		this.u_id = u_id;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.firstname = firstname;
-		this.lastname = lastname;
+	public int getuId() {
+		return uId;
 	}
 
 
-
-	public int getU_id() {
-		return u_id;
-	}
-
-
-	public void setU_id(int u_id) {
-		this.u_id = u_id;
+	public void setuId(int uId) {
+		this.uId = uId;
 	}
 
 
@@ -132,12 +109,10 @@ public class ScrumUser implements Serializable{
 		this.lastname = lastname;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Scrumhub_User [u_id=" + u_id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", firstname=" + firstname + ", lastname=" + lastname + "]";
+		return "ScrumUser [uId=" + uId + ", username=" + username + ", email=" + email + ", firstname=" + firstname
+				+ ", lastname=" + lastname + "]";
 	}
-	
 	
 }

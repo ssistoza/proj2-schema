@@ -17,28 +17,16 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	ScrumUserRepo userRepo;
 	
 	@Override
-<<<<<<< HEAD
-	public Scrumhub_User validateUser(String username, String password) {
-		Scrumhub_User tempUser = userRepo.findByUsernameAndPassword(username, password);
+	public ScrumUser validateUser(String username, String password) {
+		ScrumUser tempUser = userRepo.findByUsernameAndPassword(username, password);
 		if(tempUser != null) {
 			return tempUser;
 		}
 		return null;
 	}
-	
+		
 	@Override
-	public Scrumhub_User registration(Scrumhub_User user) {
-		Boolean tempReg = userRepo.existsByUsernameIgnoreCase(user.getUsername());
-		if(tempReg = true) {
-			return new Scrumhub_User(user.getU_id(), user.getFirstname(), user.getLastname(), user.getUsername(), user.getEmail());
-		}
-		return null;
-	}
-	@Override
-	public Scrumhub_User createNewScrumUser(Scrumhub_User user) {
-=======
 	public ScrumUser createNewScrumUser(ScrumUser user) {
->>>>>>> e7c8e04188824d4770335994c3144aabbcaef192
 		if (user != null) {
 		userRepo.save(user);
 		}
@@ -63,7 +51,7 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 
 	@Override
 	public ScrumUser deleteScrumUser(ScrumUser user) {
-		userRepo.delete(user.getU_id());
+		userRepo.delete(user.getuId());
 		return user;
 	}
 
