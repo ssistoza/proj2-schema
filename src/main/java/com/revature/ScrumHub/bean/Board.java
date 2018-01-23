@@ -34,7 +34,7 @@ public class Board {
 	private Timestamp bTimestamp;
 	
 	@OneToMany(mappedBy="boardKey", fetch=FetchType.EAGER)
-	private Set<Swimlane> swimlanes = new HashSet<Swimlane>();
+	private Set<Swimlane> swimlanes = new HashSet<>();
 		
 	public Board() {}
 
