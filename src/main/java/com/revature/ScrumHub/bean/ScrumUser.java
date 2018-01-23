@@ -6,9 +6,11 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -39,12 +41,16 @@ public class ScrumUser implements Serializable{
 	@Column(name="LASTNAME")
 	private String lastname;
 	
+	@OneToMany(mappedBy="boardMemberId", fetch=FetchType.EAGER)
+	private Set<BoardMember> associatedBoards = new HashSet<>();
+	
 	public ScrumUser() {}
 
-	public ScrumUser(int uId, String username, String email, String firstname, String lastname) {
+	public ScrumUser(int uId, String username, String password, String email, String firstname, String lastname) {
 		super();
 		this.uId = uId;
 		this.username = username;
+		this.password = password;
 		this.email = email;
 		this.firstname = firstname;
 		this.lastname = lastname;

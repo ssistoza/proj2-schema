@@ -34,6 +34,8 @@ public interface ScrumUserService {
 	 * @return
 	 */
 	public List<ScrumUser> retrieveAllScrumUsers();
+	
+
 	/**
 	 * 
 	 * @param username
@@ -41,6 +43,7 @@ public interface ScrumUserService {
 	 * @return
 	 */
 	public ScrumUser validateUser(String username, String password);
+	
 	/**
 	 * 
 	 * @param user
