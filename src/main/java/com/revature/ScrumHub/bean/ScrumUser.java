@@ -1,6 +1,8 @@
 package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,8 +33,6 @@ public class ScrumUser implements Serializable{
 	
 	@Column(name="LASTNAME")
 	private String lastname;
-	
-	private Set<BoardMembers> associatedBoards = new HashSet<>();
 	
 	public ScrumUser() {}
 
