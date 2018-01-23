@@ -10,8 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.revature.ScrumHub.bean.Story;
 import com.revature.ScrumHub.repository.StoryRepo;
 
-@Transactional
+
 @Service
+@Transactional
 public class StoryServiceImpl implements StoryService {
 	
 	@Autowired

@@ -51,7 +51,7 @@ public class BoardCtrl {
 	 *  - If board is null, return BAD_REQUEST
 	 *  - If board is not null, return ACCEPTED
 	 */
-	@PostMapping("/rename")
+	@PostMapping("/update")
 	public ResponseEntity<Object> renameBoard(int bId, String newName){
 		if ( bId > 0 ) { 
 			Board sb = sbService.updateName(bId, newName);

@@ -1,7 +1,5 @@
 package com.revature.ScrumHub.service;
 
-import java.util.List;
-
 import com.revature.ScrumHub.bean.Board;
 
 /**

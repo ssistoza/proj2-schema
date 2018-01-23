@@ -1,15 +1,11 @@
 package com.revature.ScrumHub.service;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.ScrumHub.bean.Story;
 import com.revature.ScrumHub.bean.Task;
-
 import com.revature.ScrumHub.repository.TaskRepo;
 
 

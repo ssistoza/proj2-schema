@@ -22,7 +22,7 @@ public class SlStatusCtrl {
 	@Autowired
 	SlStatusService slStatusService;
 	
-	@GetMapping("/get/{id}")
+	@GetMapping("/{id}")
 	public SlStatus getslStatus(@PathVariable int id) {
 		System.out.println("SlStatusCtrl -get");
 		return slStatusService.getSlStatus(id);

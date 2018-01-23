@@ -7,8 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.revature.ScrumHub.bean.SlStatus;
 import com.revature.ScrumHub.repository.SlStatusRepo;
 
-@Transactional
+
 @Service
+@Transactional
 public class SlStatusServiceImpl implements SlStatusService {
 
 	@Autowired
