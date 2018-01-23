@@ -1,10 +1,14 @@
 package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -32,11 +36,11 @@ public class ScrumUser implements Serializable{
 	@Column(name="LASTNAME")
 	private String lastname;
 	
+	@OneToMany(mappedBy="boardMemberId", fetch=FetchType.EAGER)
+	private Set<BoardMember> associatedBoards = new HashSet<>();
 	
 	public ScrumUser() {}
 
-	
-	
 	public ScrumUser(int u_id, String username, String password, String email, String firstname, String lastname) {
 		super();
 		this.u_id = u_id;
