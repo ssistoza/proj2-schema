@@ -30,7 +30,7 @@ public class ScrumUser implements Serializable{
 	private String username;
 	
 	@Column(nullable=false)
-	private transient String password;
+	private String password;
 	
 	@Column(name="EMAIL", nullable=false)
 	private String email;
