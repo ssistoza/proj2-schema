@@ -21,8 +21,8 @@ public class Swimlane implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(sequenceName="SL_SEQ", name="SL_SEQ")
-	@GeneratedValue(generator="SL_SEQ", strategy=GenerationType.SEQUENCE)
+//	@SequenceGenerator(sequenceName="SL_SEQ", name="SL_SEQ")
+//	@GeneratedValue(generator="SL_SEQ", strategy=GenerationType.SEQUENCE)
 	@Column(name="SL_ID", nullable=false)
 	private int slId;
 	@Column(name="SL_NAME", nullable=false)
@@ -35,14 +35,12 @@ public class Swimlane implements Serializable{
 	@JoinColumn(name="SL_STATUS_ID")
 	private SlStatus slStatus;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="B_ID")
-	private Board boardKey;
-	
+	@Column(name="B_ID")
+	private int boardKey;	
 	
 	public Swimlane() {}
 	
-	public Swimlane(int slId, String slName, int slOrder, SlStatus slStatus, Board boardKey) {
+	public Swimlane(int slId, String slName, int slOrder, SlStatus slStatus, int boardKey) {
 		this.slId = slId;
 		this.slName = slName;
 		this.slOrder = slOrder;
@@ -79,10 +77,10 @@ public class Swimlane implements Serializable{
 		this.slStatus = slStatus;
 	}
 
-	public Board getBoardKey() {
+	public int getBoardKey() {
 		return boardKey;
 	}
-	public void setBoardKey(Board boardKey) {
+	public void setBoardKey(int boardKey) {
 		this.boardKey = boardKey;
 	}
 
