@@ -1,6 +1,8 @@
 package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,9 +39,9 @@ public class ScrumUser implements Serializable{
 	@Column(name="LASTNAME")
 	private String lastname;
 	
-	
 	public ScrumUser() {}
 
+<<<<<<< HEAD
 	
 	
 <<<<<<< HEAD:src/main/java/com/revature/ScrumHub/bean/Scrumhub_User.java
@@ -56,6 +58,8 @@ public class ScrumUser implements Serializable{
 
 	public Scrumhub_User(int u_id, String username, String password, String email, String firstname, String lastname) {
 =======
+=======
+>>>>>>> ff30d530105e898a19466fe57d05024f844f66a8
 	public ScrumUser(int u_id, String username, String password, String email, String firstname, String lastname) {
 >>>>>>> e7c8e04188824d4770335994c3144aabbcaef192:src/main/java/com/revature/ScrumHub/bean/ScrumUser.java
 		super();
