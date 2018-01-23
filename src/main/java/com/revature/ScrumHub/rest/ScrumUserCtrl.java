@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,8 @@ import com.revature.ScrumHub.bean.ScrumUser;
 import com.revature.ScrumHub.service.ScrumUserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user/")
+@CrossOrigin(origins="*")
 public class ScrumUserCtrl {
 
 	@Autowired
