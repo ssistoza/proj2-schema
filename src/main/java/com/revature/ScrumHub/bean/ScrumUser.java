@@ -32,11 +32,10 @@ public class ScrumUser implements Serializable{
 	@Column(name="LASTNAME")
 	private String lastname;
 	
+	private Set<BoardMembers> associatedBoards = new HashSet<>();
 	
 	public ScrumUser() {}
 
-	
-	
 	public ScrumUser(int u_id, String username, String password, String email, String firstname, String lastname) {
 		super();
 		this.u_id = u_id;
