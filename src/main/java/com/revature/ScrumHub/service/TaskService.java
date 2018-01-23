@@ -32,9 +32,11 @@ public class TaskService {
 		
 		if(story != null)
 		{
+			
 			task.setStory(story);
-			task.setTaskTimestamp(new Timestamp(new Date().getTime()));
-			taskRepo.save(task);
+			task.setTaskActive(true);
+			
+			task = taskRepo.save(task);
 			return task;
 		}
 		else
@@ -42,5 +44,40 @@ public class TaskService {
 			return null;
 		}
 	}
+	
+	//this function should be called after business logic from a previous function has determined that the update is valid
+	public Task updateTask(Task task)
+	{
+		//check that a task with an ID that matches the parameter ID exists in the DB
+		boolean dbTaskExists = taskRepo.exists(task.getTaskId());
+		
+		if(dbTaskExists)
+		{
+			task = taskRepo.save(task);
+			return task;
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
+//	public boolean deleteTask(Task task)
+//	{
+//		//check that a task with an ID that matches the parameter ID exists in the DB
+//		boolean dbTaskExists = taskRepo.exists(task.getTaskId());
+//		
+//		if(dbTaskExists)
+//		{
+//			
+//			taskRepo.delete(task);
+//			//return taskRepo.exists(task.getTaskId());
+//			return true;
+//		}
+//		else
+//		{
+//			return false;
+//		}
+//	}
 
 }

@@ -43,39 +43,20 @@ public class Task implements Serializable
 	@JoinColumn(name="STORY_ID")
 	private Story story;
 	
+	@Column(name="IS_TASK_ACTIVE")
+	private boolean isTaskActive;
+	
 	public Task()
 	{
 		
 	}
 	
-	public Task(String taskDescription, Timestamp taskTimestamp) {
-		super();
-		this.taskDescription = taskDescription;
-		this.taskTimestamp = taskTimestamp;
-	}
 	
 	public Task(String taskDescription, Story story) {
-		super();
 		this.taskDescription = taskDescription;
 		this.story = story;
 	}
 
-	public Task(int taskId, String taskDescription, Timestamp taskTimestamp) {
-		super();
-		this.taskId = taskId;
-		this.taskDescription = taskDescription;
-		this.taskTimestamp = taskTimestamp;
-	}	
-	
-	public Task(int taskId, String taskDescription, Timestamp taskTimestamp, Story story) {
-		super();
-		this.taskId = taskId;
-		this.taskDescription = taskDescription;
-		this.taskTimestamp = taskTimestamp;
-		this.story = story;
-	}
-	
-	
 
 	public int getTaskId() {
 		return taskId;
@@ -101,7 +82,6 @@ public class Task implements Serializable
 		this.taskTimestamp = taskTimestamp;
 	}
 	
-
 	public Story getStory() {
 		return story;
 	}
@@ -110,11 +90,25 @@ public class Task implements Serializable
 		this.story = story;
 	}
 
+	
+	public boolean isTaskActive() {
+		return isTaskActive;
+	}
+
+
+	public void setTaskActive(boolean isTaskActive) {
+		this.isTaskActive = isTaskActive;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Task [taskId=" + taskId + ", taskDescription=" + taskDescription + ", taskTimestamp=" + taskTimestamp
-				+ ", story=" + story + "]";
+				+ ", story=" + story + ", isTaskActive=" + isTaskActive + "]";
 	}
+
+
+
 	
 	
 }
