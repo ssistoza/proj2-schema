@@ -10,7 +10,7 @@ import com.revature.ScrumHub.bean.ScrumUser;
 import com.revature.ScrumHub.repository.ScrumUserRepo;
 
 @Service
-@Transactional()
+@Transactional
 public class ScrumUserServiceImpl implements ScrumUserService{
 
 	@Autowired

@@ -7,8 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.revature.ScrumHub.bean.Role;
 import com.revature.ScrumHub.repository.RolesRepo;
 
-@Transactional
+
 @Service
+@Transactional
 public class RolesServiceImpl implements RolesService {
 
 	@Autowired

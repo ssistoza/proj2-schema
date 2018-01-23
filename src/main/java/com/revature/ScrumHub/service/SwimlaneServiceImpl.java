@@ -10,8 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.revature.ScrumHub.bean.Swimlane;
 import com.revature.ScrumHub.repository.SwimlaneRepo;
 
-@Transactional
+
 @Service
+@Transactional
 public class SwimlaneServiceImpl implements SwimlaneService {
 
 	@Autowired

@@ -1,8 +1,5 @@
 package com.revature.ScrumHub.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,12 +8,12 @@ import com.revature.ScrumHub.bean.Board;
 import com.revature.ScrumHub.repository.BoardRepo;
 
 @Service
+@Transactional
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	BoardRepo sbRepo;
 
-	@Transactional
 	@Override
 	public Board createNewBoard(Board sb) {
 		if ( sb.getbName().length() <= 0) { return null; }
@@ -31,7 +28,6 @@ public class BoardServiceImpl implements BoardService {
 		return temp;
 	}
 
-	@Transactional
 	@Override
 	public Board updateName(int bId, String newName) {
 		Board sb = getBoard(bId);
@@ -43,7 +39,11 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public int deleteBoard(int id) {
-		// TODO Auto-generated method stub
+		Board temp = getBoard(id);
+		if ( temp != null ) {
+			sbRepo.delete(temp);
+			return 1;
+		}
 		return 0;
 	}
 
