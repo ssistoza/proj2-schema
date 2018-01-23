@@ -3,7 +3,7 @@ package com.revature.ScrumHub.service;
 import java.util.List;
 
 import com.revature.ScrumHub.bean.Swimlane;
-import com.revature.ScrumHub.repository.SwimlaneRepository;
+import com.revature.ScrumHub.repository.SwimlaneRepo;
 
 public interface SwimlaneService {
 

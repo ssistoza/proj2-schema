@@ -2,7 +2,7 @@ package com.revature.ScrumHub.service;
 
 import java.util.List;
 
-import com.revature.ScrumHub.bean.Scrumhub_User;
+import com.revature.ScrumHub.bean.ScrumUser;
 
 /**
  * 
@@ -16,29 +16,30 @@ public interface ScrumUserService {
 	 * @param user
 	 * @return
 	 */
-	public Scrumhub_User createNewScrumUser(Scrumhub_User user);
+	public ScrumUser createNewScrumUser(ScrumUser user);
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
-	public Scrumhub_User retrieveScrumUser(int id);
+	public ScrumUser retrieveScrumUser(int id);
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
-	public Scrumhub_User updateScrumUser(Scrumhub_User user);
+	public ScrumUser updateScrumUser(ScrumUser user);
 	/**
 	 * 
 	 * @return
 	 */
-	public List<Scrumhub_User> retrieveAllScrumUsers();
+	public List<ScrumUser> retrieveAllScrumUsers();
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
+<<<<<<< HEAD
 	public Scrumhub_User deleteScrumUser(Scrumhub_User user);
 	/**
 	 * 
@@ -53,6 +54,10 @@ public interface ScrumUserService {
 	 * @return
 	 */
 	public Scrumhub_User registration(Scrumhub_User user);
+=======
+	public ScrumUser deleteScrumUser(ScrumUser user);
+	
+>>>>>>> e7c8e04188824d4770335994c3144aabbcaef192
 	
 
 }

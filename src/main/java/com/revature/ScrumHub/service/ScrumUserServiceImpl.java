@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.ScrumHub.bean.Scrumhub_User;
+import com.revature.ScrumHub.bean.ScrumUser;
 import com.revature.ScrumHub.repository.ScrumUserRepo;
 
 @Service
@@ -17,6 +17,7 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	ScrumUserRepo userRepo;
 	
 	@Override
+<<<<<<< HEAD
 	public Scrumhub_User validateUser(String username, String password) {
 		Scrumhub_User tempUser = userRepo.findByUsernameAndPassword(username, password);
 		if(tempUser != null) {
@@ -35,6 +36,9 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	}
 	@Override
 	public Scrumhub_User createNewScrumUser(Scrumhub_User user) {
+=======
+	public ScrumUser createNewScrumUser(ScrumUser user) {
+>>>>>>> e7c8e04188824d4770335994c3144aabbcaef192
 		if (user != null) {
 		userRepo.save(user);
 		}
@@ -42,23 +46,23 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	}
 
 	@Override
-	public Scrumhub_User retrieveScrumUser(int id) {
+	public ScrumUser retrieveScrumUser(int id) {
 		return userRepo.findOne(id);
 	}
 
 	@Override
-	public Scrumhub_User updateScrumUser(Scrumhub_User user) {
+	public ScrumUser updateScrumUser(ScrumUser user) {
 		return userRepo.save(user);
 	}
 
 	@Override
-	public List<Scrumhub_User> retrieveAllScrumUsers() {
+	public List<ScrumUser> retrieveAllScrumUsers() {
 		
 		return userRepo.findAll();
 	}
 
 	@Override
-	public Scrumhub_User deleteScrumUser(Scrumhub_User user) {
+	public ScrumUser deleteScrumUser(ScrumUser user) {
 		userRepo.delete(user.getU_id());
 		return user;
 	}

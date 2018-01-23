@@ -1,4 +1,4 @@
-package com.revature.ScrumHub.Service;
+package com.revature.ScrumHub.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.ScrumHub.Repository.SwimlaneRepository;
 import com.revature.ScrumHub.bean.Swimlane;
+import com.revature.ScrumHub.repository.SwimlaneRepo;
 
 @Transactional
 @Service
 public class SwimlaneServiceImpl implements SwimlaneService {
 
 	@Autowired
-	SwimlaneRepository swimRepo;
+	SwimlaneRepo swimRepo;
 
 	@Override
 	public Swimlane getSwimlane(int slId) {

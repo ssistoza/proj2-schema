@@ -54,6 +54,12 @@ public class Task implements Serializable
 		this.taskTimestamp = taskTimestamp;
 	}
 	
+	public Task(String taskDescription, Story story) {
+		super();
+		this.taskDescription = taskDescription;
+		this.story = story;
+	}
+
 	public Task(int taskId, String taskDescription, Timestamp taskTimestamp) {
 		super();
 		this.taskId = taskId;
