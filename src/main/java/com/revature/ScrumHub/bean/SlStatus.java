@@ -16,6 +16,7 @@ public class SlStatus implements Serializable{
 	@Id
 	@Column(name="SL_STATUS_ID", nullable=false)
 	private int slStatusId;
+	
 	@Column(name="STATUS_TYPE")
 	private String statusType;
 		
