@@ -17,12 +17,19 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	ScrumUserRepo userRepo;
 	
 	@Override
+	public ScrumUser validateUser(String username, String password) {
+		ScrumUser tempUser = userRepo.findByUsernameAndPassword(username, password);
+		if(tempUser != null) {
+			return tempUser;
+		}
+		return null;
+	}
+	
 	public ScrumUser createNewScrumUser(ScrumUser user) {
 		if (user != null) {
 		userRepo.save(user);
 		}
 		return null;
-		
 	}
 
 	@Override

@@ -1,8 +1,11 @@
 package com.revature.ScrumHub.rest;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +20,7 @@ import com.revature.ScrumHub.bean.ScrumUser;
 import com.revature.ScrumHub.service.ScrumUserServiceImpl;
 
 @RestController
-@RequestMapping("/user/")
+@RequestMapping("/user")
 public class ScrumUserCtrl {
 
 	@Autowired
@@ -31,7 +34,7 @@ public class ScrumUserCtrl {
 	}
 	@RequestMapping("/retrieveUser/{id}")
 	public ScrumUser retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
-		
+		System.out.println("trying to get ID");
 		return userService.retrieveScrumUser(id);
 	}
 	@RequestMapping("/retrieveAllUsers")
@@ -48,5 +51,18 @@ public class ScrumUserCtrl {
 	public ResponseEntity<ScrumUser> deleteScrumUser(@RequestBody ScrumUser user){
 		ScrumUser deletedUser = userService.deleteScrumUser(user);
 		return new ResponseEntity<ScrumUser>(deletedUser, HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping("/login")
+	public void loggingInUser(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
+		ScrumUser loggedInUser = userService.validateUser(username, password);
+		
+		if(loggedInUser != null) {
+			request.getSession().setAttribute("user", loggedInUser);
+			request.getRequestDispatcher("index.html").forward(request, response);
+		}else {
+			System.err.println("invalid credentials -sending user back to login.html");
+			response.sendRedirect("login.html");
+		}
 	}
 }

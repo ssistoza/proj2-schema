@@ -12,4 +12,9 @@ public interface ScrumUserRepo extends JpaRepository<ScrumUser, Integer> {
 
 	
 	List<ScrumUser> findAll(Iterable<Integer> userId);
+	
+	public boolean existsByUsernameIgnoreCase(String username);
+	
+	public ScrumUser findByUsernameAndPassword(String username, String password);
+
 }
