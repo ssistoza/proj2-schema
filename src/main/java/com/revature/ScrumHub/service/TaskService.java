@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.ScrumHub.bean.Story;
 import com.revature.ScrumHub.bean.Task;
@@ -14,6 +15,7 @@ import com.revature.ScrumHub.repository.TaskRepo;
 
 
 @Service
+@Transactional
 public class TaskService {
 	
 	@Autowired
@@ -27,13 +29,14 @@ public class TaskService {
 	}
 	
 	public Task createTask(Task task){
-
-		Story story = storyService.getStory(task.getStory().getStoryId());
+		
+		Story story = storyService.getStory(task.getStoryId());
+		System.out.println(story);
 		
 		if(story != null)
 		{
 			
-			task.setStory(story);
+			task.setStoryId(story.getStoryId());
 			task.setTaskActive(true);
 			
 			task = taskRepo.save(task);
@@ -41,6 +44,7 @@ public class TaskService {
 		}
 		else
 		{
+			System.out.println("could not find story in DB");
 			return null;
 		}
 	}

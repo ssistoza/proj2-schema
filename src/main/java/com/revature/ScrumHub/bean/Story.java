@@ -3,6 +3,8 @@ package com.revature.ScrumHub.bean;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +14,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.revature.ScrumHub.bean.Task;
 
 @Entity
 @Table(name="STORIES")
@@ -24,7 +29,7 @@ public class Story implements Serializable{
 	@Id
 	@SequenceGenerator(sequenceName="STORY_SEQ", name="STORY_SEQ", allocationSize=1)
 	@GeneratedValue(generator="STORY_SEQ", strategy=GenerationType.SEQUENCE)
-	@Column(name="STORY_ID", nullable=false)
+	@Column(name="STORY_ID")
 	private int storyId;
 	
 	@Column(name="STORY_NAME", nullable=false)
@@ -41,23 +46,27 @@ public class Story implements Serializable{
 	@Column(name="STORY_ORDER")
 	private int storyOrder;
 	
-//	@ManyToOne(fetch=FetchType.EAGER)
-//	@JoinColumn(name="SL_ID")
-//	private int slId;
+	@Column(name="SL_ID")
+	private int slId;
+	
+	@OneToMany(mappedBy="storyId", fetch=FetchType.EAGER)
+	private Set<Task> tasks = new HashSet<>();
 	
 	public Story() {}
 
-	public Story(int storyId, String storyName, int points, String checklistName, Timestamp doneStoryTimestamp,
-			int storyOrder) {
-		this.storyId = storyId;
+
+	public Story(String storyName, int points, String checklistName, Timestamp doneStoryTimestamp, int storyOrder,
+			int slId, Set<Task> tasks) {
+		super();
 		this.storyName = storyName;
 		this.points = points;
 		this.checklistName = checklistName;
 		this.doneStoryTimestamp = doneStoryTimestamp;
 		this.storyOrder = storyOrder;
+		this.slId = slId;
+		this.tasks = tasks;
 	}
-	
-	
+
 
 	public int getStoryId() {
 		return storyId;
@@ -106,11 +115,35 @@ public class Story implements Serializable{
 	public void setStoryOrder(int storyOrder) {
 		this.storyOrder = storyOrder;
 	}
+	
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
+	
+	
+
+	public int getSlId() {
+		return slId;
+	}
+
+
+	public void setSlId(int slId) {
+		this.slId = slId;
+	}
+
 
 	@Override
 	public String toString() {
-		return "StoriesModel [storyId=" + storyId + ", storyName=" + storyName + ", points=" + points
-				+ ", checklistName=" + checklistName + ", doneStoryTimestamp=" + doneStoryTimestamp + ", storyOrder="
-				+ storyOrder + "]";
-	}	
+		return "Story [storyId=" + storyId + ", storyName=" + storyName + ", points=" + points + ", checklistName="
+				+ checklistName + ", doneStoryTimestamp=" + doneStoryTimestamp + ", storyOrder=" + storyOrder
+				+ ", slId=" + slId + ", tasks=" + tasks + "]";
+	}
+
+
+	
+		
 }
