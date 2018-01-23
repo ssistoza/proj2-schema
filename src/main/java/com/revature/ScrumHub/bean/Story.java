@@ -41,15 +41,14 @@ public class Story implements Serializable{
 	@Column(name="STORY_ORDER")
 	private int storyOrder;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="SL_ID")
-	private Swimlane swimlane;
+	@Column(name="SL_ID")
+	private int swimlane;
 
 	
 	public Story() {}	
 	
 	public Story(int storyId, String storyName, int points, String checklistName, Timestamp doneStoryTimestamp,
-			int storyOrder, Swimlane swimlane) {
+			int storyOrder, int swimlane) {
 		super();
 		this.storyId = storyId;
 		this.storyName = storyName;
@@ -109,11 +108,11 @@ public class Story implements Serializable{
 		this.storyOrder = storyOrder;
 	}
 
-	public Swimlane getSwimlane() {
+	public int getSwimlane() {
 		return swimlane;
 	}
 
-	public void setSwimlane(Swimlane swimlane) {
+	public void setSwimlane(int swimlane) {
 		this.swimlane = swimlane;
 	}
 
