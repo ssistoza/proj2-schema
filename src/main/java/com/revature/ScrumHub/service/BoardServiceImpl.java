@@ -31,13 +31,6 @@ public class BoardServiceImpl implements BoardService {
 		return temp;
 	}
 
-	@Override 
-	public List<Board> getAllUserBoards(int scrumUserId) {
-		List<Board> listTemp = new ArrayList<>();
-		// if ( scrumUserId > 0 ) listTemp = sbRepo.getAllBoardsBybOwner(); 
-		return listTemp;
-	}
-
 	@Transactional
 	@Override
 	public Board updateName(int bId, String newName) {
