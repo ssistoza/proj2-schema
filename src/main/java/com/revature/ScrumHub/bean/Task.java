@@ -39,9 +39,8 @@ public class Task implements Serializable
 	@Column(name="TASK_TIMESTAMP")
 	private Timestamp taskTimestamp;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="STORY_ID")
-	private Story story;
+	@Column(name="STORY_ID")
+	private int storyId;
 	
 	@Column(name="IS_TASK_ACTIVE")
 	private boolean isTaskActive;
@@ -51,10 +50,9 @@ public class Task implements Serializable
 		
 	}
 	
-	
-	public Task(String taskDescription, Story story) {
+	public Task(String taskDescription, int storyId) {
 		this.taskDescription = taskDescription;
-		this.story = story;
+		this.storyId = storyId;
 	}
 
 
@@ -82,15 +80,14 @@ public class Task implements Serializable
 		this.taskTimestamp = taskTimestamp;
 	}
 	
-	public Story getStory() {
-		return story;
+	public int getStoryId() {
+		return storyId;
 	}
 
-	public void setStory(Story story) {
-		this.story = story;
+	public void setStoryId(int storyId) {
+		this.storyId = storyId;
 	}
 
-	
 	public boolean isTaskActive() {
 		return isTaskActive;
 	}
@@ -100,13 +97,11 @@ public class Task implements Serializable
 		this.isTaskActive = isTaskActive;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Task [taskId=" + taskId + ", taskDescription=" + taskDescription + ", taskTimestamp=" + taskTimestamp
-				+ ", story=" + story + ", isTaskActive=" + isTaskActive + "]";
+				+ ", storyId=" + storyId + ", isTaskActive=" + isTaskActive + "]";
 	}
-
 
 
 	
