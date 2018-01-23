@@ -57,7 +57,7 @@ public class Story implements Serializable{
 
 	public Story(String storyName, int points, String checklistName, Timestamp doneStoryTimestamp, int storyOrder,
 			int slId, Set<Task> tasks) {
-		super();
+
 		this.storyName = storyName;
 		this.points = points;
 		this.checklistName = checklistName;
@@ -66,7 +66,6 @@ public class Story implements Serializable{
 		this.slId = slId;
 		this.tasks = tasks;
 	}
-
 
 	public int getStoryId() {
 		return storyId;
@@ -125,7 +124,6 @@ public class Story implements Serializable{
 	}
 	
 	
-
 	public int getSlId() {
 		return slId;
 	}
@@ -143,7 +141,5 @@ public class Story implements Serializable{
 				+ ", slId=" + slId + ", tasks=" + tasks + "]";
 	}
 
-
-	
 		
 }
