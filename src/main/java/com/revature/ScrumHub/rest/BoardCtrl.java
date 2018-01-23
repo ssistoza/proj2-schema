@@ -3,21 +3,22 @@ package com.revature.ScrumHub.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.ScrumHub.bean.ScrumBoard;
-import com.revature.ScrumHub.service.ScrumBoardService;
+import com.revature.ScrumHub.bean.Board;
+import com.revature.ScrumHub.service.BoardService;
 
 @RestController
 @RequestMapping("/board/")
-public class ScrumBoardCtrl {
+@CrossOrigin(origins="*")
+public class BoardCtrl {
 
 	@Autowired
-	ScrumBoardService sbService;
+	BoardService sbService;
 
 	/**
 	 * Purpose:
@@ -32,10 +33,10 @@ public class ScrumBoardCtrl {
 	 * - If the board is not null, return ACCEPTED.
 	 */
 	@PostMapping("/create")
-	public ResponseEntity<ScrumBoard> createNewBoard(@RequestBody ScrumBoard sb){
-		if (sb == null ) return new ResponseEntity<ScrumBoard>(sb, HttpStatus.BAD_REQUEST);
+	public ResponseEntity<Board> createNewBoard(@RequestBody Board sb){
+		if (sb == null ) return new ResponseEntity<Board>(sb, HttpStatus.BAD_REQUEST);
 		sb = sbService.createNewBoard(sb);
-		return new ResponseEntity<ScrumBoard>(sb, HttpStatus.ACCEPTED);
+		return new ResponseEntity<Board>(sb, HttpStatus.ACCEPTED);
 	}
 
 	/**
@@ -53,7 +54,7 @@ public class ScrumBoardCtrl {
 	@PostMapping("/rename")
 	public ResponseEntity<Object> renameBoard(int bId, String newName){
 		if ( bId > 0 ) { 
-			ScrumBoard sb = sbService.updateName(bId, newName);
+			Board sb = sbService.updateName(bId, newName);
 			if ( sb != null ) return new ResponseEntity<Object>(HttpStatus.ACCEPTED);
 		}
 		

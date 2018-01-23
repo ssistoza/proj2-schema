@@ -2,14 +2,14 @@ package com.revature.ScrumHub.service;
 
 import java.util.List;
 
-import com.revature.ScrumHub.bean.ScrumBoard;
+import com.revature.ScrumHub.bean.Board;
 
 /**
  * Purpose:
  * - Allowable Methods for the Scrumboard.
  * @author     Shane Avery Sistoza
  */
-public interface ScrumBoardService {
+public interface BoardService {
 	
 	// Create
 
@@ -22,7 +22,7 @@ public interface ScrumBoardService {
 	 *
 	 * @return     The ScrumBoard that was inserted.
 	 */
-	public ScrumBoard createNewBoard(ScrumBoard sb);
+	public Board createNewBoard(Board sb);
 
 	// Retreive
 
@@ -35,18 +35,7 @@ public interface ScrumBoardService {
 	 *
 	 * @return     The Scrum Board.
 	 */
-	public ScrumBoard getBoard(int bId);
-
-	/**
-	 * Purpose:
-	 *   - Return a list of ScrumBoards owned by the user.
-	 * @author     Shane Avery Sistoza
-	 *
-	 * @param      scrumUserId  The scrum user identifier
-	 *
-	 * @return     All user boards.
-	 */
-	public List<ScrumBoard> getAllUserBoards(int scrumUserId);
+	public Board getBoard(int bId);
 
 	// Update
 
@@ -60,7 +49,7 @@ public interface ScrumBoardService {
 	 *
 	 * @return     The updated ScrumBoard.
 	 */
-	public ScrumBoard updateName(int bId, String newName);
+	public Board updateName(int bId, String newName);
 
 	// Delete
 
