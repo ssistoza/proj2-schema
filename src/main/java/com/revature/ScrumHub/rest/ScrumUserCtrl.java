@@ -37,7 +37,6 @@ public class ScrumUserCtrl {
 	
 	@RequestMapping("/{id}")
 	public ScrumUser retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
-		System.out.println("trying to get ID");
 		return userService.retrieveScrumUser(id);
 	}
 	

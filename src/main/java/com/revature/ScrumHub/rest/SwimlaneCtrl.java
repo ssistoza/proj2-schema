@@ -24,13 +24,11 @@ public class SwimlaneCtrl {
 
 	@GetMapping("/{id}")
 	public Swimlane getSwimlane(@PathVariable int id) {
-		System.out.println("SwimlaneCtrl -get");
 		return swimlaneService.getSwimlane(id);
 	}
 		
 		@PostMapping("/create")
 		public ResponseEntity<Swimlane> createSwimlane(@RequestBody Swimlane swimlane){
-			System.out.println("SwimlaneCtrl -createSwimlane");
 			swimlane = swimlaneService.createSwimlane(swimlane);
 					return new ResponseEntity<Swimlane>(swimlane, HttpStatus.CREATED);		
 		}
