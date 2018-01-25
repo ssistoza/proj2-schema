@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.ScrumHub.bean.SlStatus;
 import com.revature.ScrumHub.bean.Swimlane;
 import com.revature.ScrumHub.repository.SwimlaneRepo;
 
@@ -17,10 +18,12 @@ public class SwimlaneServiceImpl implements SwimlaneService {
 
 	@Autowired
 	SwimlaneRepo swimRepo;
+	
+	@Autowired
+	SlStatusService slStatusRepo;
 
 	@Override
 	public Swimlane getSwimlane(int slId) {
-		System.out.println("Service -getSwimlane");
 		return swimRepo.findOne(slId);
 	}
 
@@ -32,14 +35,16 @@ public class SwimlaneServiceImpl implements SwimlaneService {
 
 	@Override
 	public Swimlane createSwimlane(Swimlane swimlane) {
-		System.out.println("Service -create Swimlane");
+		
+		SlStatus status = slStatusRepo.getSlStatus(1);
+		
+		swimlane.setSlStatus(status);
 		swimRepo.save(swimlane);
 		return swimlane;
 	}
 
 	@Override
 	public void deleteSwimlane(Swimlane swimlane) {
-		System.out.println(swimlane.getSlName() + " has been deleted");
 		swimRepo.delete(swimlane);
 	}
 

@@ -20,7 +20,6 @@ public class RolesCtrl {
 	
 	@GetMapping("/{id}")
 	public Role getRole(@PathVariable int id) {
-		System.out.println("RoleCtrl -get");
 		return roleService.getRole(id);
 		
 	}

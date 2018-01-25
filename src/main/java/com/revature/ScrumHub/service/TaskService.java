@@ -27,7 +27,6 @@ public class TaskService {
 	public Task createTask(Task task){
 		
 		Story story = storyService.getStory(task.getStoryId());
-		System.out.println(story);
 		
 		if(story != null)
 		{
@@ -40,15 +39,12 @@ public class TaskService {
 		}
 		else
 		{
-			System.out.println("could not find story in DB");
 			return null;
 		}
 	}
 	
-	//this function should be called after business logic from a previous function has determined that the update is valid
 	public Task updateTask(Task task)
 	{
-		//check that a task with an ID that matches the parameter ID exists in the DB
 		boolean dbTaskExists = taskRepo.exists(task.getTaskId());
 		
 		if(dbTaskExists)

@@ -16,23 +16,21 @@ import com.revature.ScrumHub.service.SlStatusService;
 
 @RestController
 @RequestMapping("/swimlanestatus/")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class SlStatusCtrl {
 
 	@Autowired
 	SlStatusService slStatusService;
-	
+
 	@GetMapping("/{id}")
 	public SlStatus getslStatus(@PathVariable int id) {
-		System.out.println("SlStatusCtrl -get");
 		return slStatusService.getSlStatus(id);
 	}
-		
-		@PostMapping("/update")
-		public ResponseEntity<SlStatus> createslStatus(@RequestBody SlStatus slStatus){
-			System.out.println("SwimlaneCtrl -createSwimlane");
-			slStatus = slStatusService.createSlStatus(slStatus);
-					return new ResponseEntity<SlStatus>(slStatus, HttpStatus.CREATED);		
-		}
-	
+
+	@PostMapping("/update")
+	public ResponseEntity<SlStatus> createslStatus(@RequestBody SlStatus slStatus) {
+		slStatus = slStatusService.createSlStatus(slStatus);
+		return new ResponseEntity<SlStatus>(slStatus, HttpStatus.CREATED);
+	}
+
 }
