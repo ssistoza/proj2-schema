@@ -22,7 +22,7 @@ public class SlStatusServiceImpl implements SlStatusService {
 	
 	@Override
 	public SlStatus createSlStatus (SlStatus slStatus) {
-S		slStatusRepo.save(slStatus);
+		slStatusRepo.save(slStatus);
 		return slStatus;
 	}
 
