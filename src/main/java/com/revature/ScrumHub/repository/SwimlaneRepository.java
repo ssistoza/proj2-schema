@@ -4,6 +4,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.revature.ScrumHub.bean.Swimlane;
 
-public interface SwimlaneRepo extends PagingAndSortingRepository<Swimlane, Integer>{
+public interface SwimlaneRepository extends PagingAndSortingRepository<Swimlane, Integer>{
 
 }

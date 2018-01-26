@@ -1,17 +1,27 @@
 package com.revature.ScrumHub.service;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.ScrumHub.bean.Swimlane;
-import com.revature.ScrumHub.repository.SwimlaneRepo;
+import com.revature.ScrumHub.repository.SwimlaneRepository;
 
-public interface SwimlaneService {
+@Service
+public class SwimlaneService {
 
-	public Swimlane getSwimlane (int slId);
 	
-	public List<Swimlane> getAllSwimlanes(int slId);
+	@Autowired
+	SwimlaneRepository swimRepo;
 	
-	public Swimlane createSwimlane (Swimlane swimlane);
+	public Swimlane getSwimlane (int slId) {
+		System.out.println("Service -getSwimlane");
+		return swimRepo.findOne(slId);
+	}
 	
-	public void deleteSwimlane (Swimlane swimlane);
+	public Swimlane createSwimlane (Swimlane swimlane) {
+		System.out.println("Service -create Swimlane");
+		swimRepo.save(swimlane);
+		return swimlane;
+	}
+	
 }
