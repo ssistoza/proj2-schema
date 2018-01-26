@@ -114,6 +114,16 @@ public class ScrumUser implements Serializable{
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+	
+	
+
+	public Set<BoardMember> getAssociatedBoards() {
+		return associatedBoards;
+	}
+
+	public void setAssociatedBoards(Set<BoardMember> associatedBoards) {
+		this.associatedBoards = associatedBoards;
+	}
 
 	@Override
 	public String toString() {

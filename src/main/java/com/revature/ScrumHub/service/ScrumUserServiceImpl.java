@@ -20,7 +20,8 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	public ScrumUser validateUser(String username, String password) {
 		ScrumUser tempUser = userRepo.findByUsernameAndPassword(username, password);
 		if(tempUser != null) {
-			return tempUser;
+			ScrumUser authUser = new ScrumUser(tempUser.getuId(),tempUser.getUsername(),null,tempUser.getEmail(),tempUser.getFirstname(),tempUser.getLastname());
+			return authUser;
 		}
 		return null;
 	}
@@ -28,7 +29,7 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	@Override
 	public ScrumUser createNewScrumUser(ScrumUser user) {
 		if (user != null) {
-		userRepo.save(user);
+		return userRepo.save(user);
 		}
 		return null;
 	}

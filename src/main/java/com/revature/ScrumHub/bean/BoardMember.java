@@ -1,6 +1,7 @@
 package com.revature.ScrumHub.bean;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -20,6 +21,7 @@ public class BoardMember {
 	private Board sboard;
 	
 	@Id
+	@Column(name="U_ID")
 	private int boardMemberId;
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
@@ -58,6 +60,8 @@ public class BoardMember {
 	public void setMemberRole(Role memberRole) {
 		this.memberRole = memberRole;
 	}
+	
+	
 
 	@Override
 	public String toString() {

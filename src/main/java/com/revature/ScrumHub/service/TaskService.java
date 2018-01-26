@@ -28,12 +28,12 @@ public class TaskService {
 	
 	public Task createTask(Task task){
 
-		Story story = storyService.getStory(task.getStory().getStoryId());
+		Story story = storyService.getStory(task.getStory());
 		
 		if(story != null)
 		{
 			
-			task.setStory(story);
+			task.setStory(story.getStoryId());
 			task.setTaskActive(true);
 			
 			task = taskRepo.save(task);

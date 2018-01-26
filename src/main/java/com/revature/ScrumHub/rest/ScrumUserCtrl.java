@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,47 +27,44 @@ public class ScrumUserCtrl {
 	@Autowired
 	ScrumUserService userService;
 	
-	@PostMapping("/createUser")
+	@PostMapping("/create")
 	public ResponseEntity<ScrumUser> createNewScrumUser(@RequestBody ScrumUser user){
 		if (user == null ) return new ResponseEntity<ScrumUser>(user, HttpStatus.BAD_REQUEST);
 		user = userService.createNewScrumUser(user);
-		return new ResponseEntity<ScrumUser>(user, HttpStatus.ACCEPTED);
+		return new ResponseEntity<ScrumUser>(user, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping("/retrieveUser/{id}")
-	public ScrumUser retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
-		System.out.println("trying to get ID");
-		return userService.retrieveScrumUser(id);
+	@RequestMapping("/{id}")
+	public ResponseEntity<ScrumUser> retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
+		ScrumUser retrieveOneUser = userService.retrieveScrumUser(id);
+		return new ResponseEntity<ScrumUser>(retrieveOneUser, HttpStatus.ACCEPTED);
 	}
 	
-	@RequestMapping("/retrieveAllUsers")
-	public List<ScrumUser> retrieveAllScrumUsers(){
-		
-		return userService.retrieveAllScrumUsers();
+	@RequestMapping("/all")
+	public ResponseEntity<List<ScrumUser>> retrieveAllScrumUsers(){
+		List<ScrumUser> retrieveAllUsers = userService.retrieveAllScrumUsers();
+		return new ResponseEntity<List<ScrumUser>>(retrieveAllUsers, HttpStatus.ACCEPTED);
 	}
 	
-	@PostMapping("/updateUser")
-	public ScrumUser updateScrumUser(@RequestBody ScrumUser user){
-		
-		return userService.updateScrumUser(user);
+	@PostMapping("/update")
+	public ResponseEntity<ScrumUser> updateScrumUser(@RequestBody ScrumUser user){
+		ScrumUser updateUser = userService.updateScrumUser(user);
+		return new ResponseEntity<ScrumUser>(updateUser, HttpStatus.ACCEPTED);
 	}
 	
-	@PostMapping("/deleteUser")
+	@PostMapping("/delete")
 	public ResponseEntity<ScrumUser> deleteScrumUser(@RequestBody ScrumUser user){
 		ScrumUser deletedUser = userService.deleteScrumUser(user);
 		return new ResponseEntity<ScrumUser>(deletedUser, HttpStatus.ACCEPTED);
 	}
 	
 	@PostMapping("/login")
-	public void loggingInUser(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
-		ScrumUser loggedInUser = userService.validateUser(username, password);
-		
+	public ResponseEntity<ScrumUser> loggingInUser(@RequestBody ScrumUser user) throws IOException, ServletException {
+		ScrumUser loggedInUser = userService.validateUser(user.getUsername(), user.getPassword());
 		if(loggedInUser != null) {
-			request.getSession().setAttribute("user", loggedInUser);
-			request.getRequestDispatcher("index.html").forward(request, response);
+			return new ResponseEntity<ScrumUser>(loggedInUser, HttpStatus.ACCEPTED);
 		}else {
-			System.err.println("invalid credentials -sending user back to login.html");
-			response.sendRedirect("login.html");
+			return new ResponseEntity<ScrumUser>(loggedInUser, HttpStatus.NOT_FOUND);
 		}
 	}
 }
