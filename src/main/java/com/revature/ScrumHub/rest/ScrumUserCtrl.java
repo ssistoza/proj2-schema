@@ -35,22 +35,6 @@ public class ScrumUserCtrl {
 	}
 	
 	@RequestMapping("/{id}")
-<<<<<<< HEAD
-	public ScrumUser retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
-		return userService.retrieveScrumUser(id);
-	}
-	
-	@RequestMapping("/all")
-	public List<ScrumUser> retrieveAllScrumUsers(){
-		
-		return userService.retrieveAllScrumUsers();
-	}
-	
-	@PostMapping("/update")
-	public ScrumUser updateScrumUser(@RequestBody ScrumUser user){
-		
-		return userService.updateScrumUser(user);
-=======
 	public ResponseEntity<ScrumUser> retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
 		ScrumUser retrieveOneUser = userService.retrieveScrumUser(id);
 		return new ResponseEntity<ScrumUser>(retrieveOneUser, HttpStatus.ACCEPTED);
@@ -66,7 +50,6 @@ public class ScrumUserCtrl {
 	public ResponseEntity<ScrumUser> updateScrumUser(@RequestBody ScrumUser user){
 		ScrumUser updateUser = userService.updateScrumUser(user);
 		return new ResponseEntity<ScrumUser>(updateUser, HttpStatus.ACCEPTED);
->>>>>>> updatingbeans
 	}
 	
 	@PostMapping("/delete")
