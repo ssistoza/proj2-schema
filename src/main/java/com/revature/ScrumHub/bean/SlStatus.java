@@ -14,21 +14,21 @@ public class SlStatus implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="SL_STATUS_ID", nullable=false)
+	@Column(name="SL_STATUS_ID")
 	private int slStatusId;
-	
 	@Column(name="STATUS_TYPE")
 	private String statusType;
 		
 	
-	public SlStatus() {}	
+	public SlStatus() {}
 	
 	public SlStatus(int slStatusId, String statusType) {
+		super();
 		this.slStatusId = slStatusId;
 		this.statusType = statusType;
 	}
 	
-
+	
 	public int getSlStatusId() {
 		return slStatusId;
 	}
@@ -41,9 +41,8 @@ public class SlStatus implements Serializable{
 	}
 	public void setStatusType(String statusType) {
 		this.statusType = statusType;
-	}	
+	}
 
-	
 	@Override
 	public String toString() {
 		return "SlStatus [slStatusId=" + slStatusId + ", statusType=" + statusType + "]";

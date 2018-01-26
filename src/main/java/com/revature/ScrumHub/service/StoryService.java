@@ -1,21 +1,27 @@
 package com.revature.ScrumHub.service;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.ScrumHub.bean.Story;
+import com.revature.ScrumHub.repository.StoryRepo;
 
-public interface StoryService {
+@Service
+public class StoryService {
 
-	public Story getStory(int storyId);
+	@Autowired
+	StoryRepo storyRepo;
+		
+	public Story getStory(int storyId) {
+		System.out.println("service -getStory");
+		return storyRepo.findOne(storyId);		
+	}
 	
-	public Story createStory(Story story);
-
-	List<Story> getAllUserStories(int scrumUserId);
-
-	Story updateName(int storyId, String newName);
-
-	void deleteStory(Story story);
-	
-	
+	public Story createStory (Story story) {
+		System.out.println("Servie -createStory");
+		storyRepo.save(story);
+		return story;
+		
+	}
 	
 }

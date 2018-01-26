@@ -1,16 +1,13 @@
 package com.revature.ScrumHub.bean;
 
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,17 +22,16 @@ public class Board {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="B_SEQ")
 	@Column(name="B_ID")
 	private int bId;
-	
-	@Column(name="B_NAME")
+
 	private String bName;
 
 	@CreationTimestamp
-	@Column(name="B_TIMESTAMP")
 	private Timestamp bTimestamp;
 	
-	@OneToMany(mappedBy="boardKey", fetch=FetchType.EAGER)
-	private Set<Swimlane> swimlanes = new HashSet<>();
-		
+//	private List<ScrumUser> bSpectators;
+//	private List<ScrumUser> bAdmins;
+//	private ScrumUser bOwner;
+	
 	public Board() {}
 
 	public int getbId() { return bId; }
@@ -44,12 +40,10 @@ public class Board {
 	public void setbName(String bName) { this.bName = bName; }
 	public Timestamp getbTimestamp() { return bTimestamp; }
 	public void setbTimestamp(Timestamp bTimestamp) { this.bTimestamp = bTimestamp; }
-	public Set<Swimlane> getSwimlanes() {return swimlanes;}
-	public void setSwimlanes(Set<Swimlane> swimlanes) {this.swimlanes = swimlanes;}
 
 	@Override
 	public String toString() {
-		return "Board [bId=" + bId + ", bName=" + bName + ", bTimestamp=" + bTimestamp + ", swimlanes=" + swimlanes
-				+ "]";
-	}	
+		return "ScrumBoard [bId=" + bId + ", bName=" + bName + ", bTimestamp=" + bTimestamp + "]";
+	}
+	
 }

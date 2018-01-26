@@ -39,24 +39,37 @@ public class Task implements Serializable
 	@Column(name="TASK_TIMESTAMP")
 	private Timestamp taskTimestamp;
 	
-	
-	@Column(name="STORY_ID")
-	private int story;
-	
-	@Column(name="IS_TASK_ACTIVE")
-	private boolean isTaskActive;
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="STORY_ID")
+	private Story story;
 	
 	public Task()
 	{
 		
 	}
 	
-	
-	public Task(String taskDescription, int story) {
+	public Task(String taskDescription, Timestamp taskTimestamp) {
+		super();
 		this.taskDescription = taskDescription;
+		this.taskTimestamp = taskTimestamp;
+	}
+	
+	public Task(int taskId, String taskDescription, Timestamp taskTimestamp) {
+		super();
+		this.taskId = taskId;
+		this.taskDescription = taskDescription;
+		this.taskTimestamp = taskTimestamp;
+	}	
+	
+	public Task(int taskId, String taskDescription, Timestamp taskTimestamp, Story story) {
+		super();
+		this.taskId = taskId;
+		this.taskDescription = taskDescription;
+		this.taskTimestamp = taskTimestamp;
 		this.story = story;
 	}
-
+	
+	
 
 	public int getTaskId() {
 		return taskId;
@@ -82,33 +95,20 @@ public class Task implements Serializable
 		this.taskTimestamp = taskTimestamp;
 	}
 	
-	public int getStory() {
+
+	public Story getStory() {
 		return story;
 	}
 
-	public void setStory(int story) {
+	public void setStory(Story story) {
 		this.story = story;
 	}
-
-	
-	public boolean isTaskActive() {
-		return isTaskActive;
-	}
-
-
-	public void setTaskActive(boolean isTaskActive) {
-		this.isTaskActive = isTaskActive;
-	}
-
 
 	@Override
 	public String toString() {
 		return "Task [taskId=" + taskId + ", taskDescription=" + taskDescription + ", taskTimestamp=" + taskTimestamp
-				+ ", story=" + story + ", isTaskActive=" + isTaskActive + "]";
+				+ ", story=" + story + "]";
 	}
-
-
-
 	
 	
 }
