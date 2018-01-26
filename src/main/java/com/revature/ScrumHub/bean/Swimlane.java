@@ -2,6 +2,7 @@ package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,33 +21,31 @@ public class Swimlane implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(sequenceName="SL_SEQ", name="SL_SEQ")
-	@GeneratedValue(generator="SL_SEQ", strategy=GenerationType.SEQUENCE)
-	@Column(name="SL_ID")
+//	@SequenceGenerator(sequenceName="SL_SEQ", name="SL_SEQ")
+//	@GeneratedValue(generator="SL_SEQ", strategy=GenerationType.SEQUENCE)
+	@Column(name="SL_ID", nullable=false)
 	private int slId;
-	@Column(name="SL_NAME")
+	@Column(name="SL_NAME", nullable=false)
 	private String slName;
 	@Column(name="SL_ORDER")
 	private int slOrder;
 	
 
-//	@ManyToOne(fetch=FetchType.EAGER)
-//	@JoinColumn(name="SL_STATUS_ID")
-//	private int slStatusId;
-//	
-//	@OneToMany(fetch=FetchType.EAGER)
-//	@JoinColumn(name="B_ID")
-//	private int boardId;
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="SL_STATUS_ID")
+	private SlStatus slStatus;
 	
+	@Column(name="B_ID")
+	private int boardKey;	
 	
 	public Swimlane() {}
-
-
-	public Swimlane(int slId, String slName, int slOrder) {
-		super();
+	
+	public Swimlane(int slId, String slName, int slOrder, SlStatus slStatus, int boardKey) {
 		this.slId = slId;
 		this.slName = slName;
 		this.slOrder = slOrder;
+		this.slStatus = slStatus;
+		this.boardKey = boardKey;
 	}
 
 
@@ -70,13 +68,27 @@ public class Swimlane implements Serializable{
 	}
 	public void setSlOrder(int slOrder) {
 		this.slOrder = slOrder;
+	}		
+
+	public SlStatus getSlStatus() {
+		return slStatus;
+	}
+	public void setSlStatus(SlStatus slStatus) {
+		this.slStatus = slStatus;
+	}
+
+	public int getBoardKey() {
+		return boardKey;
+	}
+	public void setBoardKey(int boardKey) {
+		this.boardKey = boardKey;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Swimlane [slId=" + slId + ", slName=" + slName + ", slOrder=" + slOrder + "]";
-	}
-	
-	
+		return "Swimlane [slId=" + slId + ", slName=" + slName + ", slOrder=" + slOrder + ", slStatus=" + slStatus
+				+ ", boardKey=" + boardKey + "]";
+	}	
 }
+

@@ -17,15 +17,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="STORIES")
-public class Story {
+public class Story implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(sequenceName="STORY_SEQ", name="STORY_SEQ")
+	@SequenceGenerator(sequenceName="STORY_SEQ", name="STORY_SEQ", allocationSize=1)
 	@GeneratedValue(generator="STORY_SEQ", strategy=GenerationType.SEQUENCE)
-	@Column(name="STORY_ID")
+	@Column(name="STORY_ID", nullable=false)
 	private int storyId;
 	
-	@Column(name="STORY_NAME")
+	@Column(name="STORY_NAME", nullable=false)
 	private String storyName;	
 	
 	private int points;
@@ -39,23 +41,24 @@ public class Story {
 	@Column(name="STORY_ORDER")
 	private int storyOrder;
 	
-//	@ManyToOne(fetch=FetchType.EAGER)
-//	@JoinColumn(name="SL_ID")
-//	private int slId;
-	
-	public Story() {}
+	@Column(name="SL_ID")
+	private int swimlane;
 
+	
+	public Story() {}	
+	
 	public Story(int storyId, String storyName, int points, String checklistName, Timestamp doneStoryTimestamp,
-			int storyOrder) {
+			int storyOrder, int swimlane) {
+		super();
 		this.storyId = storyId;
 		this.storyName = storyName;
 		this.points = points;
 		this.checklistName = checklistName;
 		this.doneStoryTimestamp = doneStoryTimestamp;
 		this.storyOrder = storyOrder;
+		this.swimlane = swimlane;
 	}
-	
-	
+
 
 	public int getStoryId() {
 		return storyId;
@@ -105,10 +108,20 @@ public class Story {
 		this.storyOrder = storyOrder;
 	}
 
+	public int getSwimlane() {
+		return swimlane;
+	}
+
+	public void setSwimlane(int swimlane) {
+		this.swimlane = swimlane;
+	}
+
 	@Override
 	public String toString() {
-		return "StoriesModel [storyId=" + storyId + ", storyName=" + storyName + ", points=" + points
-				+ ", checklistName=" + checklistName + ", doneStoryTimestamp=" + doneStoryTimestamp + ", storyOrder="
-				+ storyOrder + "]";
-	}	
+		return "Story [storyId=" + storyId + ", storyName=" + storyName + ", points=" + points + ", checklistName="
+				+ checklistName + ", doneStoryTimestamp=" + doneStoryTimestamp + ", storyOrder=" + storyOrder
+				+ ", swimlane=" + swimlane + "]";
+	}
+
+		
 }

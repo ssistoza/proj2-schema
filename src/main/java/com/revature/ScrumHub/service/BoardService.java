@@ -37,17 +37,6 @@ public interface BoardService {
 	 */
 	public Board getBoard(int bId);
 
-	/**
-	 * Purpose:
-	 *   - Return a list of ScrumBoards owned by the user.
-	 * @author     Shane Avery Sistoza
-	 *
-	 * @param      scrumUserId  The scrum user identifier
-	 *
-	 * @return     All user boards.
-	 */
-	public List<Board> getAllUserBoards(int scrumUserId);
-
 	// Update
 
 	/**

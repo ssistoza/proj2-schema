@@ -1,26 +1,14 @@
 package com.revature.ScrumHub.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.ScrumHub.bean.SlStatus;
-import com.revature.ScrumHub.repository.SlStatusRepository;
+import com.revature.ScrumHub.repository.SlStatusRepo;
 
 @Service
-public class SlStatusService {
+public interface SlStatusService {
 
-	@Autowired
-	SlStatusRepository slStatusRepo;
+	public SlStatus getSlStatus (int slStatusId);	
 	
-	public SlStatus getSlStatus (int slStatusId) {
-		System.out.println("Service -getSwimlaneStatus");
-		return slStatusRepo.findOne(slStatusId);		
-	}
-	
-	public SlStatus createSlStatus (SlStatus slStatus) {
-		System.out.println("Service -update Swimlane Status");
-		slStatusRepo.save(slStatus);
-		return slStatus;
-	}
-	
+	public SlStatus createSlStatus (SlStatus slStatus);	
 }

@@ -7,14 +7,8 @@ import com.revature.ScrumHub.bean.Role;
 import com.revature.ScrumHub.repository.RolesRepo;
 
 @Service
-public class RolesService {
+public interface RolesService {
 	
-	@Autowired
-	RolesRepo rolesRepo;
-	
-	public Role getRole (int roleId) {
-		System.out.println("Service -getRole");
-		return rolesRepo.findOne(roleId);
-	}	
+	public Role getRole (int roleId);
 
 }

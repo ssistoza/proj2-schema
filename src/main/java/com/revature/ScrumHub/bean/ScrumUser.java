@@ -1,27 +1,36 @@
 package com.revature.ScrumHub.bean;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="SCRUMHUB_USER")
-public class Scrumhub_User implements Serializable{
+public class ScrumUser implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@SequenceGenerator(sequenceName="FILL_SEQ", name="FILL_SEQ")
+	@GeneratedValue(generator="FILL_SEQ", strategy=GenerationType.SEQUENCE)
 	@Column(name="U_ID", nullable=false)
-	private int u_id;
+	private int uId;
 	
 	@Column(name="USERNAME",unique=true,nullable=false)
 	private String username;
 	
 	@Column(nullable=false)
-	private transient String password;
+	private String password;
 	
 	@Column(name="EMAIL", nullable=false)
 	private String email;
@@ -32,14 +41,14 @@ public class Scrumhub_User implements Serializable{
 	@Column(name="LASTNAME")
 	private String lastname;
 	
+	@OneToMany(mappedBy="boardMemberId", fetch=FetchType.EAGER)
+	private Set<BoardMember> associatedBoards = new HashSet<>();
 	
-	public Scrumhub_User() {}
+	public ScrumUser() {}
 
-	
-	
-	public Scrumhub_User(int u_id, String username, String password, String email, String firstname, String lastname) {
+	public ScrumUser(int uId, String username, String password, String email, String firstname, String lastname) {
 		super();
-		this.u_id = u_id;
+		this.uId = uId;
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -47,15 +56,13 @@ public class Scrumhub_User implements Serializable{
 		this.lastname = lastname;
 	}
 
-
-
-	public int getU_id() {
-		return u_id;
+	public int getuId() {
+		return uId;
 	}
 
 
-	public void setU_id(int u_id) {
-		this.u_id = u_id;
+	public void setuId(int uId) {
+		this.uId = uId;
 	}
 
 
@@ -107,13 +114,21 @@ public class Scrumhub_User implements Serializable{
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+	
+	
 
+	public Set<BoardMember> getAssociatedBoards() {
+		return associatedBoards;
+	}
+
+	public void setAssociatedBoards(Set<BoardMember> associatedBoards) {
+		this.associatedBoards = associatedBoards;
+	}
 
 	@Override
 	public String toString() {
-		return "Scrumhub_User [u_id=" + u_id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", firstname=" + firstname + ", lastname=" + lastname + "]";
+		return "ScrumUser [uId=" + uId + ", username=" + username + ", email=" + email + ", firstname=" + firstname
+				+ ", lastname=" + lastname + "]";
 	}
-	
 	
 }
