@@ -29,7 +29,7 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	@Override
 	public ScrumUser createNewScrumUser(ScrumUser user) {
 		if (user != null) {
-		return userRepo.save(user);
+			return userRepo.save(user);
 		}
 		return null;
 	}
@@ -46,7 +46,6 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 
 	@Override
 	public List<ScrumUser> retrieveAllScrumUsers() {
-		
 		return userRepo.findAll();
 	}
 
