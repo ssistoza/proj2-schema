@@ -42,7 +42,27 @@ public class SwimlaneServiceImpl implements SwimlaneService {
 		swimRepo.save(swimlane);
 		return swimlane;
 	}
-
+	
+	@Override
+	public Swimlane updateSwimlane(Swimlane swimlane) {
+		System.out.println("Service -update Swimlane");
+		
+		SlStatus status = slStatusRepo.getSlStatus(swimlane.getSlStatus().getSlStatusId());
+		
+		swimlane.setSlStatus(status);
+		
+		swimRepo.save(swimlane);
+		return swimlane;
+	}
+	
+	@Override
+	public Swimlane reorderSwimlane(Swimlane swimlane){
+		
+		swimRepo.updateSlOrder(swimlane.getSlOrder(), swimlane.getSlId());
+		
+		return swimlane;
+	}
+	
 	@Override
 	public void deleteSwimlane(Swimlane swimlane) {
 		swimRepo.delete(swimlane);
