@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.ScrumHub.bean.Board;
 import com.revature.ScrumHub.bean.BoardMember;
 import com.revature.ScrumHub.bean.BoardMemberId;
+import com.revature.ScrumHub.bean.Role;
 import com.revature.ScrumHub.repository.BoardMemberRepo;
 
 @Service
@@ -14,9 +16,24 @@ public class BoardMemberServiceImpl implements BoardMemberService {
 	@Autowired
 	BoardMemberRepo bmRepo;
 
+	@Autowired
+	BoardService bService;
+	
+	@Autowired 
+	RolesService rService;
+	
 	@Override
 	public BoardMember createNewBoard(BoardMember bm) {
-		if ( bm != null ) bmRepo.save(bm);
+		
+		if ( bm != null ) {
+			Board tBoard = bService.getBoard(bm.getSboard().getbId());
+			Role tRole = rService.getRole(bm.getMemberRole().getRoleId());
+			bm.setSboard(tBoard);
+			bm.setMemberRole(tRole);
+			bmRepo.save(bm);
+		}
+			
+			
 		return bm;
 	}
 
