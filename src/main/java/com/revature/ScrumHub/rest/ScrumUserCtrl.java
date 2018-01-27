@@ -29,9 +29,13 @@ public class ScrumUserCtrl {
 	
 	@PostMapping("/create")
 	public ResponseEntity<ScrumUser> createNewScrumUser(@RequestBody ScrumUser user){
-		if (user == null ) return new ResponseEntity<ScrumUser>(user, HttpStatus.BAD_REQUEST);
+		if (user == null ) return new ResponseEntity<ScrumUser>(user, HttpStatus.BAD_REQUEST);		
 		user = userService.createNewScrumUser(user);
-		return new ResponseEntity<ScrumUser>(user, HttpStatus.CREATED);
+		if (user == null) {
+			return new ResponseEntity<ScrumUser>(user, HttpStatus.CONFLICT);
+		}else {
+			return new ResponseEntity<ScrumUser>(user, HttpStatus.CREATED);
+		}
 	}
 	
 	@RequestMapping("/{id}")

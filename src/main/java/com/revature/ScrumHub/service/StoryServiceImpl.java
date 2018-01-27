@@ -22,7 +22,7 @@ public class StoryServiceImpl implements StoryService {
 	public Story getStory(int storyId) {
 		Story s = new Story();
 		s = storyRepo.findOne(storyId);
-		return storyRepo.findOne(storyId);		
+		return s;		
 	}
 	
 	@Override

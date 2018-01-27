@@ -29,7 +29,9 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	@Override
 	public ScrumUser createNewScrumUser(ScrumUser user) {
 		if (user != null) {
-		return userRepo.save(user);
+			if(userRepo.existsByUsernameIgnoreCase(user.getUsername()) == false) {
+				return userRepo.save(user);
+			} else { return null;}
 		}
 		return null;
 	}
