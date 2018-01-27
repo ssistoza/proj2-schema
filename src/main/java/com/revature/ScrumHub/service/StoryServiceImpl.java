@@ -20,7 +20,6 @@ public class StoryServiceImpl implements StoryService {
 	
 	@Override
 	public Story getStory(int storyId) {
-		System.out.println("Service -getStory");
 		Story s = new Story();
 		s = storyRepo.findOne(storyId);
 		return storyRepo.findOne(storyId);		
@@ -28,14 +27,12 @@ public class StoryServiceImpl implements StoryService {
 	
 	@Override
 	public Story createStory(Story story) {
-		System.out.println("Service -createStory");
 		storyRepo.save(story);
 		return story;		
 	}	
 
 	@Override
 	public List<Story> getAllUserStories(int scrumUserId) {
-		System.out.println("Service -getAllUserStories");
 		List<Story> allStories = new ArrayList<>();
 		return allStories;
 	}
@@ -50,7 +47,6 @@ public class StoryServiceImpl implements StoryService {
 
 	@Override
 	public void deleteStory(Story story) {
-		System.out.println(story.getStoryName() + "has been deleted");
 		storyRepo.delete(story);
 	}	
 }

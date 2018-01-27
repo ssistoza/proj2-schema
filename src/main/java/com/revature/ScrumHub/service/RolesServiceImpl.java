@@ -16,7 +16,6 @@ public class RolesServiceImpl implements RolesService {
 	RolesRepo rolesRepo;
 	
 	public Role getRole (int roleId) {
-		System.out.println("Service -getRole");
 		return rolesRepo.findOne(roleId);
 	}	
 }

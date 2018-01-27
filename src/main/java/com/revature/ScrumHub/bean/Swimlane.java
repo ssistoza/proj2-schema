@@ -8,10 +8,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -21,8 +25,8 @@ public class Swimlane implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-//	@SequenceGenerator(sequenceName="SL_SEQ", name="SL_SEQ")
-//	@GeneratedValue(generator="SL_SEQ", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(sequenceName="SL_SEQ", name="SL_SEQ")
+	@GeneratedValue(generator="SL_SEQ", strategy=GenerationType.SEQUENCE)
 	@Column(name="SL_ID", nullable=false)
 	private int slId;
 	@Column(name="SL_NAME", nullable=false)
@@ -39,6 +43,7 @@ public class Swimlane implements Serializable{
 	private int boardKey;	
 	
 	@OneToMany(mappedBy="slId", fetch=FetchType.EAGER)
+	@OrderBy("storyOrder")
 	private Set<Story> stories = new HashSet<>();
 	
 	public Swimlane() {}

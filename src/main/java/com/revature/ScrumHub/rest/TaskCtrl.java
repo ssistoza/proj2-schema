@@ -30,7 +30,6 @@ public class TaskCtrl {
 	
 	@PostMapping("/create")
 	public ResponseEntity<Task> createTask(@RequestBody Task task){
-		System.out.println(task + " recieved from the user. Calling TaskService");
 		
 		task = taskService.createTask(task);
 		
@@ -47,7 +46,6 @@ public class TaskCtrl {
 	
 	@PostMapping("/update")
 	public ResponseEntity<Task> updateTask(@RequestBody Task task){
-		System.out.println(task + " recieved from the user. Calling TaskService");
 		
 		task = taskService.updateTask(task);
 		

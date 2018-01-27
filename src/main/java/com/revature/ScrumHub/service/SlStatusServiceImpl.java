@@ -17,13 +17,11 @@ public class SlStatusServiceImpl implements SlStatusService {
 	
 	@Override
 	public SlStatus getSlStatus (int slStatusId) {
-		System.out.println("Service -getSwimlaneStatus");
 		return slStatusRepo.findOne(slStatusId);		
 	}
 	
 	@Override
 	public SlStatus createSlStatus (SlStatus slStatus) {
-		System.out.println("Service -update Swimlane Status");
 		slStatusRepo.save(slStatus);
 		return slStatus;
 	}

@@ -24,13 +24,11 @@ public class StoryCtrl {
 	
 	@GetMapping("/{id}")
 	public Story getStory(@PathVariable int id) {
-		System.out.println("StoryCtrl -get");
 		return storyService.getStory(id);
 	}
 	
 	@PostMapping("/create")
 	public ResponseEntity<Story> createStory(@RequestBody Story story) {
-		System.out.println("StoryCtrl -createStory");
 		story = storyService.createStory(story);		
 		return new ResponseEntity<Story>(story, HttpStatus.CREATED);
 	}
