@@ -15,6 +15,12 @@ public interface StoryService {
 	Story updateName(int storyId, String newName);
 
 	void deleteStory(Story story);
+
+	Story updateStory(Story story);
+
+	Story reorderStory(Story story);
+
+	Story moveStoryToSwimlane(Story story);
 	
 	
 	

@@ -3,7 +3,6 @@ package com.revature.ScrumHub.service;
 import java.util.List;
 
 import com.revature.ScrumHub.bean.Swimlane;
-import com.revature.ScrumHub.repository.SwimlaneRepo;
 
 public interface SwimlaneService {
 
@@ -14,4 +13,8 @@ public interface SwimlaneService {
 	public Swimlane createSwimlane (Swimlane swimlane);
 	
 	public void deleteSwimlane (Swimlane swimlane);
+
+	Swimlane updateSwimlane(Swimlane swimlane);
+
+	Swimlane reorderSwimlane(Swimlane swimlane);
 }

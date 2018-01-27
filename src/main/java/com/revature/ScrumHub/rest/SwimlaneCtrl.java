@@ -16,7 +16,7 @@ import com.revature.ScrumHub.service.SwimlaneService;
 
 @RestController
 @RequestMapping("/swimlane/")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class SwimlaneCtrl {
 
 	@Autowired
@@ -26,10 +26,22 @@ public class SwimlaneCtrl {
 	public Swimlane getSwimlane(@PathVariable int id) {
 		return swimlaneService.getSwimlane(id);
 	}
-		
-		@PostMapping("/create")
-		public ResponseEntity<Swimlane> createSwimlane(@RequestBody Swimlane swimlane){
-			swimlane = swimlaneService.createSwimlane(swimlane);
-					return new ResponseEntity<Swimlane>(swimlane, HttpStatus.CREATED);		
-		}
+
+	@PostMapping("/create")
+	public ResponseEntity<Swimlane> createSwimlane(@RequestBody Swimlane swimlane) {
+		swimlane = swimlaneService.createSwimlane(swimlane);
+		return new ResponseEntity<Swimlane>(swimlane, HttpStatus.CREATED);
+	}
+
+	@PostMapping("/update")
+	public ResponseEntity<Swimlane> updateSwimlane(@RequestBody Swimlane swimlane) {
+		swimlane = swimlaneService.updateSwimlane(swimlane);
+		return new ResponseEntity<Swimlane>(swimlane, HttpStatus.CREATED);
+	}
+
+	@PostMapping("/reorder")
+	public ResponseEntity<Swimlane> updateSwimlan(@RequestBody Swimlane swimlane) {
+		swimlane = swimlaneService.reorderSwimlane(swimlane);
+		return new ResponseEntity<Swimlane>(swimlane, HttpStatus.CREATED);
+	}
 }
