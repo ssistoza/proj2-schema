@@ -37,6 +37,7 @@ public class ScrumUserCtrl {
 	@RequestMapping("/{id}")
 	public ResponseEntity<ScrumUser> retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
 		ScrumUser retrieveOneUser = userService.retrieveScrumUser(id);
+		retrieveOneUser.setPassword("");
 		return new ResponseEntity<ScrumUser>(retrieveOneUser, HttpStatus.ACCEPTED);
 	}
 	
