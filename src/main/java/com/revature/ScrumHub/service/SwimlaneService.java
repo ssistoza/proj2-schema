@@ -13,4 +13,8 @@ public interface SwimlaneService {
 	public Swimlane createSwimlane (Swimlane swimlane);
 	
 	public void deleteSwimlane (Swimlane swimlane);
+
+	Swimlane updateSwimlane(Swimlane swimlane);
+
+	Swimlane reorderSwimlane(Swimlane swimlane);
 }

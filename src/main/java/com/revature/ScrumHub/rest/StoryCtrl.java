@@ -32,4 +32,22 @@ public class StoryCtrl {
 		story = storyService.createStory(story);		
 		return new ResponseEntity<Story>(story, HttpStatus.CREATED);
 	}
+	
+	@PostMapping("/update")
+	public ResponseEntity<Story> updateStory(@RequestBody Story story) {
+		story = storyService.updateStory(story);		
+		return new ResponseEntity<Story>(story, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/reorder")
+	public ResponseEntity<Story> reorderStory(@RequestBody Story story) {
+		story = storyService.reorderStory(story);		
+		return new ResponseEntity<Story>(story, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/move")
+	public ResponseEntity<Story> moveStoryToSwimlane(@RequestBody Story story) {
+		story = storyService.moveStoryToSwimlane(story);		
+		return new ResponseEntity<Story>(story, HttpStatus.CREATED);
+	}
 }

@@ -46,6 +46,28 @@ public class StoryServiceImpl implements StoryService {
 	}
 
 	@Override
+	public Story updateStory(Story story) {
+		story = storyRepo.save(story);
+		return story;
+	}
+	
+	@Override
+	public Story reorderStory(Story story){
+		
+		storyRepo.reorderStory(story.getStoryOrder(), story.getStoryId());
+		
+		return story;
+	}
+	
+	@Override
+	public Story moveStoryToSwimlane(Story story){
+		
+		storyRepo.moveStoryToSwimlane(story.getStoryOrder(), story.getSlId(), story.getStoryId());
+		
+		return story;
+	}
+	
+	@Override
 	public void deleteStory(Story story) {
 		storyRepo.delete(story);
 	}	

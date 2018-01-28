@@ -55,7 +55,6 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 
 	@Override
 	public List<ScrumUser> retrieveAllScrumUsers() {
-		
 		return userRepo.findAll();
 	}
 
