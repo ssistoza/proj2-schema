@@ -30,7 +30,7 @@ public class TaskCtrl {
 	
 	@PostMapping("/create")
 	public ResponseEntity<Task> createTask(@RequestBody Task task){
-		
+		System.out.println("you made it to create -task");
 		task = taskService.createTask(task);
 		
 		if(task != null)
@@ -46,7 +46,7 @@ public class TaskCtrl {
 	
 	@PostMapping("/update")
 	public ResponseEntity<Task> updateTask(@RequestBody Task task){
-		
+		System.out.println("we made it to update -task");
 		task = taskService.updateTask(task);
 		
 		if(task != null)
@@ -56,6 +56,22 @@ public class TaskCtrl {
 		else
 		{
 			return new ResponseEntity<Task>(task, HttpStatus.BAD_REQUEST);
+		}
+		
+	}
+	
+	@PostMapping("/delete")
+	public ResponseEntity<Task> deleteTask(@RequestBody Task task){
+		System.out.println("we made it to delete -task");
+		boolean isDeleted = taskService.deleteTask(task);
+		System.out.println("the resust of deleteTask was: " + isDeleted);
+		if(isDeleted)
+		{
+			return new ResponseEntity<Task>(HttpStatus.ACCEPTED);
+		}
+		else
+		{
+			return new ResponseEntity<Task>(HttpStatus.BAD_REQUEST);
 		}
 		
 	}
