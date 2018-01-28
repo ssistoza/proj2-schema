@@ -42,9 +42,9 @@ public class ScrumUserCtrl {
 	public ResponseEntity<Integer> checkIfExistsUsername(@RequestBody ScrumUser user){
 		int queryUser = userService.findUserbyUsername(user);
 		if (queryUser < 0) {
-			return new ResponseEntity<Integer>(queryUser, HttpStatus.FOUND);
+			return new ResponseEntity<Integer>(queryUser, HttpStatus.OK);
 		}else {
-			return new ResponseEntity<Integer>(queryUser, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Integer>(queryUser, HttpStatus.OK);
 		}
 	}
 	
