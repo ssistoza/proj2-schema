@@ -52,9 +52,9 @@ public class BoardCtrl {
 	 *  - If board is not null, return ACCEPTED
 	 */
 	@PostMapping("/update")
-	public ResponseEntity<Object> renameBoard(int bId, String newName){
-		if ( bId > 0 ) { 
-			Board sb = sbService.updateName(bId, newName);
+	public ResponseEntity<Object> renameBoard(@RequestBody Board sb){
+		if ( sb.getbId() > 0 ) { 
+			sb = sbService.updateName(sb.getbId(), sb.getbName());
 			if ( sb != null ) return new ResponseEntity<Object>(HttpStatus.ACCEPTED);
 		}
 		
