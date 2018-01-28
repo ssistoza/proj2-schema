@@ -71,7 +71,6 @@ public class TaskServiceImpl implements TaskService{
 			
 			taskRepo.delete(task);
 			return !taskRepo.exists(task.getTaskId());
-			//return true;
 		}
 		else
 		{
