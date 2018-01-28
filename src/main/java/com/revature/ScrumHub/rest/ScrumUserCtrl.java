@@ -38,6 +38,12 @@ public class ScrumUserCtrl {
 		}
 	}
 	
+	@PostMapping("/checkExists")
+	public ResponseEntity<Boolean> checkIfExistsUsername(@RequestBody ScrumUser user){
+		boolean userBool = userService.checkIfScrumUserExists(user);
+		return new ResponseEntity<Boolean>(userBool, HttpStatus.FOUND);
+	}
+	
 	@RequestMapping("/{id}")
 	public ResponseEntity<ScrumUser> retrieveScrumUser(HttpServletRequest req, @PathVariable int id){
 		ScrumUser retrieveOneUser = userService.retrieveScrumUser(id);
