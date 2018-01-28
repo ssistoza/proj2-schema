@@ -22,6 +22,7 @@ Servers
 .settings/
 .springBeans
 target/
+logs/
 
 # IDEs and editors
 /.idea
