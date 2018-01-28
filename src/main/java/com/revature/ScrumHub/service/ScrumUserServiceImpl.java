@@ -37,9 +37,12 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	}
 	
 	@Override
-	public boolean checkIfScrumUserExists(ScrumUser user) {
-		
-		return userRepo.existsByUsernameIgnoreCase(user.getUsername());
+	public int findUserbyUsername(ScrumUser user) {
+		if(userRepo.existsByUsernameIgnoreCase(user.getUsername())==true) {
+			return userRepo.findByUsername(user.getUsername()).getuId();
+		}else {
+			return -1;
+		}
 	}
 
 

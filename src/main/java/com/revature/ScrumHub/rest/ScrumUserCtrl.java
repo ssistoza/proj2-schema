@@ -39,9 +39,13 @@ public class ScrumUserCtrl {
 	}
 	
 	@PostMapping("/checkExists")
-	public ResponseEntity<Boolean> checkIfExistsUsername(@RequestBody ScrumUser user){
-		boolean userBool = userService.checkIfScrumUserExists(user);
-		return new ResponseEntity<Boolean>(userBool, HttpStatus.FOUND);
+	public ResponseEntity<Integer> checkIfExistsUsername(@RequestBody ScrumUser user){
+		int queryUser = userService.findUserbyUsername(user);
+		if (queryUser < 0) {
+			return new ResponseEntity<Integer>(queryUser, HttpStatus.FOUND);
+		}else {
+			return new ResponseEntity<Integer>(queryUser, HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@RequestMapping("/{id}")
