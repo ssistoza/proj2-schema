@@ -17,5 +17,7 @@ public interface ScrumUserRepo extends JpaRepository<ScrumUser, Integer> {
 	public ScrumUser findByUsernameAndPassword(String username, String password);
 	
 	public ScrumUser findByUsername(String username);
+	
+	public ScrumUser findByUsernameIgnoreCase(String username);
 
 }

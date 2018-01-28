@@ -12,7 +12,7 @@ public class ScrumHubApplication {
 	
 	public static void main(String[] args) {
 		logger.info("Starting Spring Boot application..Booyah!");
-		SpringApplication.run(ScrumHubApplication.class, args);		
+		SpringApplication.run(ScrumHubApplication.class, args);	
 		
 	}	
 	
