@@ -29,10 +29,19 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 	@Override
 	public ScrumUser createNewScrumUser(ScrumUser user) {
 		if (user != null) {
-			return userRepo.save(user);
+			if(userRepo.existsByUsernameIgnoreCase(user.getUsername()) == false) {
+				return userRepo.save(user);
+			} else { return null;}
 		}
 		return null;
 	}
+	
+	@Override
+	public boolean checkIfScrumUserExists(ScrumUser user) {
+		
+		return userRepo.existsByUsernameIgnoreCase(user.getUsername());
+	}
+
 
 	@Override
 	public ScrumUser retrieveScrumUser(int id) {
@@ -54,5 +63,6 @@ public class ScrumUserServiceImpl implements ScrumUserService{
 		userRepo.delete(user.getuId());
 		return user;
 	}
+
 
 }
