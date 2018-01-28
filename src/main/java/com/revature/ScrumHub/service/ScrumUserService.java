@@ -22,6 +22,13 @@ public interface ScrumUserService {
 	 * @param user
 	 * @return
 	 */
+	/**
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public boolean checkIfScrumUserExists(ScrumUser user);
+	
 	public ScrumUser retrieveScrumUser(int id);
 	/**
 	 * 
