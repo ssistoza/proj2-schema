@@ -37,7 +37,12 @@ public class Board {
 	@OneToMany(mappedBy="boardKey", fetch=FetchType.EAGER)
 	@OrderBy("slOrder")
 	private Set<Swimlane> swimlanes = new HashSet<>();
-		
+	
+	@OneToMany(mappedBy="boardId", fetch=FetchType.EAGER)
+	@OrderBy("burnDate")
+	@Column(name="B_POINTS")
+	private Set<Burndown> burnDownPoints = new HashSet<>();
+	
 	public Board() {}
 
 	public int getbId() { return bId; }
