@@ -1,6 +1,6 @@
 package com.revature.ScrumHub.service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,7 +38,7 @@ public class BurndownServiceImpl implements BurndownService{
 	}
 
 	@Override
-	public Burndown getBurndownByDateAndBoard(int b, Date d) {
+	public Burndown getBurndownByDateAndBoard(Date d, int b) {
 		Burndown bd = new Burndown();
 		bd = bRepo.findByBurnDateAndBoardId(d, b);
 		return bd;

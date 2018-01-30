@@ -1,6 +1,6 @@
 package com.revature.ScrumHub.repository;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
