@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -42,6 +43,7 @@ public class ScrumUser implements Serializable{
 	private String lastname;
 	
 	@OneToMany(mappedBy="boardMemberId", fetch=FetchType.EAGER)
+	@OrderBy("sboard")
 	private Set<BoardMember> associatedBoards = new HashSet<>();
 	
 	public ScrumUser() {}
