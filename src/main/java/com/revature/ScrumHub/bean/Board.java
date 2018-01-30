@@ -39,7 +39,7 @@ public class Board {
 	private Set<Swimlane> swimlanes = new HashSet<>();
 	
 	@OneToMany(mappedBy="boardId", fetch=FetchType.EAGER)
-	@OrderBy("burnDate")
+	@OrderBy("burnId")
 	private Set<Burndown> burnTransactions = new HashSet<>();
 	
 	public Board() {}

@@ -26,6 +26,7 @@ public class BurndownServiceImpl implements BurndownService{
 
 	@Override
 	public Burndown getBurndown(Burndown bd) {
+		System.out.println(bd.getBurnId());
 		bd = bRepo.findOne(bd.getBurnId());
 		return bd;
 	}
