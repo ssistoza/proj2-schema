@@ -40,8 +40,8 @@ public class Board {
 	
 	@OneToMany(mappedBy="boardId", fetch=FetchType.EAGER)
 	@OrderBy("burnDate")
-	@Column(name="B_POINTS")
-	private Set<Burndown> burnDownPoints = new HashSet<>();
+	@Column(name="BURN_TRANSACTION")
+	private Set<Burndown> burnTransactions = new HashSet<>();
 	
 	public Board() {}
 

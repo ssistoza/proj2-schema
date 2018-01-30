@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="BURNDOWN")
@@ -20,6 +22,7 @@ public class Burndown {
 	@Column(name="BURN_ID")
 	private int burnId;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="BURN_DATE")
 	private Date burnDate;
 	
