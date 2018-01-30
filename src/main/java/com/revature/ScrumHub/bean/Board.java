@@ -40,7 +40,6 @@ public class Board {
 	
 	@OneToMany(mappedBy="boardId", fetch=FetchType.EAGER)
 	@OrderBy("burnDate")
-	@Column(name="BURN_TRANSACTION")
 	private Set<Burndown> burnTransactions = new HashSet<>();
 	
 	public Board() {}
@@ -53,6 +52,14 @@ public class Board {
 	public void setbTimestamp(Timestamp bTimestamp) { this.bTimestamp = bTimestamp; }
 	public Set<Swimlane> getSwimlanes() {return swimlanes;}
 	public void setSwimlanes(Set<Swimlane> swimlanes) {this.swimlanes = swimlanes;}
+
+	public Set<Burndown> getBurnTransactions() {
+		return burnTransactions;
+	}
+
+	public void setBurnTransactions(Set<Burndown> burnTransactions) {
+		this.burnTransactions = burnTransactions;
+	}
 
 	@Override
 	public String toString() {

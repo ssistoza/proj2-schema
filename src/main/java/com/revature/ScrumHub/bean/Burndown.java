@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name="BURNDOWN")
 public class Burndown {
@@ -22,7 +24,7 @@ public class Burndown {
 	@Column(name="BURN_ID")
 	private int burnId;
 
-	@Temporal(TemporalType.DATE)
+	@CreationTimestamp
 	@Column(name="BURN_DATE")
 	private Date burnDate;
 	
