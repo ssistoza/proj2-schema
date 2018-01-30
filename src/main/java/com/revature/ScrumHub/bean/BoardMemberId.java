@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class BoardMemberId implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	private int sboard;
 	
 	private int boardMemberId;

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
+        </Property>
+    </Properties>
+    <!--  Console output for logging-->
+    <Appenders>
+		<!-- Rolling File Appender -->
+		<RollingFile name="FileAppender" fileName="logs/log4j2-Scrumhub.log" 
+		             filePattern="logs/log4j2-Scrumhub-%d{yyyy-MM-dd}-%i.log">
+		    <PatternLayout>
+		        <Pattern>${LOG_PATTERN}</Pattern>
+		    </PatternLayout>
+		    <Policies>
+		    	<!-- roll over policy based on size -->
+		        <SizeBasedTriggeringPolicy size="10MB" />
+		        <!--  roll over policy, right now it is set to 1 day can adjust to a week by using 7-->
+	    		<TimeBasedTriggeringPolicy interval="1" />
+		    </Policies>
+		    <DefaultRolloverStrategy max="20"/>
+		</RollingFile>
+    </Appenders>
+    <!--  file output for logging-->
+    <Loggers>
+        <AsyncLogger name="com.revature.ScrumhubApplication" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </AsyncLogger>
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Root>
+    </Loggers>
+
+</Configuration>

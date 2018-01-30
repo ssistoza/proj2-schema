@@ -59,8 +59,8 @@ public class BoardMemberServiceImpl implements BoardMemberService {
 
 	@Override
 	public boolean deleteBoardMember(BoardMember bm) {
-		if ( bm != null ) {
-			bmRepo.delete(bm);
+		if ( bm.getMemberRole() != null ) {
+			bmRepo.deleteMember(bm.getSboard(), bm.getBoardMemberId());
 			return true;
 		}
 		return false;

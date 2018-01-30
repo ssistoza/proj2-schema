@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -46,6 +47,7 @@ public class Story implements Serializable{
 	private int slId;
 	
 	@OneToMany(mappedBy="storyId", fetch=FetchType.EAGER)
+	@OrderBy("taskId")
 	private Set<Task> tasks = new HashSet<>();
 	
 	public Story() {}
