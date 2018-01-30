@@ -11,7 +11,7 @@ public class ScrumHubApplication {
 	private static Logger logger = LogManager.getLogger(ScrumHubApplication.class);
 	
 	public static void main(String[] args) {
-		logger.info("Starting Spring Boot application..Booyah!");
+		logger.info("Log Started: Starting Spring Boot application..");
 		SpringApplication.run(ScrumHubApplication.class, args);	
 		
 	}	

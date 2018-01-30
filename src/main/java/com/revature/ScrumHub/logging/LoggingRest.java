@@ -15,7 +15,6 @@ public class LoggingRest {
 	@AfterReturning(pointcut=" execution(* com.revature.ScrumHub.rest.ScrumUserCtrl.loggingInUser(..))", returning= "returnVal")
 	public void loginTracking(JoinPoint pjp, Object returnVal){
 		Logger logger = LogManager.getLogger(LoggingRest.class);
-		logger.info("This is the method executed-log4j2-booyah: ");
 		logger.info(pjp.getSignature());
 		logger.info("This is the user logged in :");
 		logger.info(returnVal);		
